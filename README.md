@@ -31,16 +31,16 @@ npx skills@latest add deanvanniekerk/skills --skill test-plan -g -a codex
 npx skills@latest add deanvanniekerk/skills --list
 ```
 
-Use `-a claude-code` for Claude Code, or omit `-a` to choose your agent. Omit `-g` to install into a project. Installation makes the instructions available; it does not configure GitHub, buy Claude access, or install other skills automatically.
+Omit `-a` to choose your agent interactively, or use `-a <agent>` to select one explicitly. Omit `-g` to install into a project. Installation makes the instructions available; it does not configure GitHub, buy Claude access, or install other skills automatically.
 
 ## Install the delivery workflow and its dependencies
 
-Use the same scope and agent for each command:
+Choose the same agent for each command. These examples install globally; omit `-g` for project installation:
 
 ```bash
-npx skills@latest add deanvanniekerk/skills --skill '*' -g -a codex
-npx skills@latest add mattpocock/skills --skill pr tdd code-review codebase-design setup-matt-pocock-skills -g -a codex
-npx skills@latest add thedotmack/claude-mem --skill babysit -g -a codex
+npx skills@latest add deanvanniekerk/skills --skill '*' -g
+npx skills@latest add mattpocock/skills --skill pr tdd code-review codebase-design setup-matt-pocock-skills -g
+npx skills@latest add thedotmack/claude-mem --skill babysit -g
 ```
 
 Then run Matt's `setup-matt-pocock-skills` once in the target project to configure the issue tracker and conventions his review skill expects. Review the proposed project setup as you would any configuration change. If those upstream skills already come from a plugin, use that installation and avoid duplicate copies.
@@ -72,7 +72,7 @@ Each skill's README has prerequisites, examples, expected output, and limitation
 npx skills@latest update -g
 
 # Rerun add to select newly introduced skills
-npx skills@latest add deanvanniekerk/skills -g -a codex
+npx skills@latest add deanvanniekerk/skills -g
 ```
 
 Keep edits you want to maintain in a clone of this repository and submit changes there. Treat installed copies as replaceable: updates can replace local customizations. Read the [changelog](CHANGELOG.md) when updating a delivery workflow.
