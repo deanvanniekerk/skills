@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- `claude-code-pr-review`: focus on concrete defects, make nits opt-in, deduplicate against freshly fetched discussions before posting, and keep local receipts with measured runtime and finding dispositions.
+- `tackle-issue`: pass earlier review context to Claude, record narrow mechanical skips, and keep optional nits out of release gates. Required review failures still block completion.
+
 ## 0.1.0 — 2026-10-13
 
 Initial public collection of five skills previously maintained as personal global skills.
