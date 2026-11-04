@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- `quality-control`: new user-invoked skill for T3 Code. Orchestrates a thermo-nuclear review and fix PR, a test plan, a headless browser test run, and a fix PR for failures; subagents own and babysit their PRs, and the orchestrator merges each once settled.
 - `execute-test-plan`: new skill. Runs a written test plan in a headless Playwright browser with screenshot evidence, restores test data, and removes its Playwright install when done.
 - `claude-code-pr-review`: focus on concrete defects, make nits opt-in, deduplicate against freshly fetched discussions before posting, and keep local receipts with measured runtime and finding dispositions.
 - `tackle-issue`: pass earlier review context to Claude, record narrow mechanical skips, and keep optional nits out of release gates. Required review failures still block completion.

@@ -1,6 +1,6 @@
 # Attribution and dependencies
 
-Dean van Niekerk maintains the six skills in this repository. Publication preparation distinguished local custom skills from Skills CLI-managed upstream installations; the latter are deliberately not vendored into this collection.
+Dean van Niekerk maintains the seven skills in this repository. Publication preparation distinguished local custom skills from Skills CLI-managed upstream installations; the latter are deliberately not vendored into this collection.
 
 ## Adapted material
 
@@ -12,8 +12,9 @@ The inspected local installation recorded the `implement` folder Git tree hash `
 
 | Author/project | Skills used | Relationship |
 | --- | --- | --- |
-| [Matt Pocock](https://github.com/mattpocock/skills) | `pr`, `tdd`, `code-review`, `codebase-design`, `setup-matt-pocock-skills` | Installed separately; provide PR writing, test discipline, local review, terminology, and project setup |
+| [Matt Pocock](https://github.com/mattpocock/skills) | `pr`, `tdd`, `code-review`, `codebase-design`, `setup-matt-pocock-skills`, `implement` | Installed separately; provide PR writing, test discipline, local review, terminology, and project setup |
 | [thedotmack / claude-mem](https://github.com/thedotmack/claude-mem/tree/main/plugin/skills/babysit) | `babysit` | Installed separately; follow-up on PR checks and review threads |
+| [Cursor plugins](https://github.com/cursor/plugins/tree/main/thermos/skills/thermo-nuclear-code-quality-review) | `thermo-nuclear-code-quality-review` | Installed separately; `quality-control`'s strict maintainability review |
 
 Matt's `pr` skill in turn [credits Dex Horthy / HumanLayer's show-me material](https://github.com/mattpocock/skills/blob/main/skills/engineering/pr/CREDITS.md). That content remains in its upstream package and is not copied into this repository.
 
