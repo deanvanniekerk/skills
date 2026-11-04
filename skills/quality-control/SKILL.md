@@ -1,6 +1,6 @@
 ---
 name: quality-control
-description: Orchestrate a quality pass over shipped work: a thermo-nuclear review and fix PR, a test plan, a browser test run, and a fix PR for what the run finds, merging each PR once settled.
+description: "Orchestrate a quality pass over shipped work: a thermo-nuclear review and fix PR, a test plan, a browser test run, and a fix PR for what the run finds, merging each PR once settled."
 disable-model-invocation: true
 license: MIT
 ---
