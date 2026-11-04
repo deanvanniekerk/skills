@@ -1,6 +1,6 @@
 # Attribution and dependencies
 
-Dean van Niekerk maintains the five skills in this repository. Publication preparation distinguished local custom skills from Skills CLI-managed upstream installations; the latter are deliberately not vendored into this collection.
+Dean van Niekerk maintains the six skills in this repository. Publication preparation distinguished local custom skills from Skills CLI-managed upstream installations; the latter are deliberately not vendored into this collection.
 
 ## Adapted material
 

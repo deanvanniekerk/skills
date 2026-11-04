@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- `execute-test-plan`: new skill. Runs a written test plan in a headless Playwright browser with screenshot evidence, restores test data, and removes its Playwright install when done.
 - `claude-code-pr-review`: focus on concrete defects, make nits opt-in, deduplicate against freshly fetched discussions before posting, and keep local receipts with measured runtime and finding dispositions.
 - `tackle-issue`: pass earlier review context to Claude, record narrow mechanical skips, and keep optional nits out of release gates. Required review failures still block completion.
 

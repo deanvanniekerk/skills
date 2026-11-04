@@ -5,6 +5,7 @@ Portable agent workflows for implementing, reviewing, publishing, and testing co
 | Skill | What it does |
 | --- | --- |
 | [test-plan](skills/test-plan/README.md) | Writes a manual QA plan |
+| [execute-test-plan](skills/execute-test-plan/README.md) | Runs a test plan in a headless browser and fills in its report |
 | [prune-tests](skills/prune-tests/README.md) | Audits or removes low-value tests |
 | [claude-code-pr-review](skills/claude-code-pr-review/README.md) | Runs Claude Code review and posts validated findings |
 | [blast-it](skills/blast-it/README.md) | Commits, pushes, and opens or updates a PR |
@@ -31,6 +32,8 @@ npx skills@latest add deanvanniekerk/skills --skill test-plan -g -a codex
 Ask your agent:
 
 > Use test-plan to prepare a QA handoff for PR 42.
+
+> Use execute-test-plan on that plan.
 
 > Use tackle-issue on issue 42.
 
