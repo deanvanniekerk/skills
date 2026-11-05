@@ -4,6 +4,7 @@ Portable agent workflows for implementing, reviewing, publishing, and testing co
 
 | Skill | What it does |
 | --- | --- |
+| [spec-review](skills/spec-review/README.md) | Consolidates a spec's merged tickets: judo moves across duplicated code, one behaviour-preserving PR |
 | [test-plan](skills/test-plan/README.md) | Writes a manual QA plan |
 | [execute-test-plan](skills/execute-test-plan/README.md) | Runs a test plan in a browser and fills in its report |
 | [quality-control](skills/quality-control/README.md) | Orchestrates a spec-level review, test plan, browser test run, and fix PRs once a spec's tickets merge (T3 Code) |

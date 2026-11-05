@@ -7,7 +7,7 @@ license: MIT
 
 # Quality Control
 
-Run this once a spec's tickets have merged, each one already delivered and reviewed alone (typically by `tackle-issue`). This pass checks the spec as a whole: in review, where the tickets meet, and in the running app.
+Run this once a spec's tickets have merged, each one already delivered and reviewed alone (typically by `tackle-issue`). Agents built those tickets independently, so this pass consolidates the spec as a whole in review, then tests it in the running app.
 
 You orchestrate; subagents do the work. Your own hands only brief, watch, decide, ask the user, and merge.
 
@@ -22,7 +22,7 @@ You orchestrate; subagents do the work. Your own hands only brief, watch, decide
 
 Start each subagent with `delegate_task` and the target above. The reviewer, planner and fixer get `isolation: "worktree"`. The tester runs where the plan's Environment section says: `isolation: "shared"` from the checkout it names, otherwise a worktree. If a named model is unavailable, tell the user and stop.
 
-A brief names each skill to follow by the absolute path of its installed `SKILL.md`: the project's `.agents/skills/<name>/` or the global `~/.agents/skills/<name>/` (`npx skills list` shows both). `thermo-nuclear-code-quality-review` and `implement` are user-invoked, so a subagent can only read them.
+A brief names each skill to follow by the absolute path of its installed `SKILL.md`: the project's `.agents/skills/<name>/` or the global `~/.agents/skills/<name>/` (`npx skills list` shows both). `spec-review` and `implement` are user-invoked, so a subagent can only read them.
 
 ## Babysit
 
@@ -34,7 +34,7 @@ A handback without that line is unfinished: send the same subagent a message to 
 
 ## Steps
 
-1. **Review and fix.** Brief a reviewer subagent: run `thermo-nuclear-code-quality-review` over the scope's range `<base>..<head>` rather than a branch, with the issues as the spec. Beyond its maintainability bar, look where the per-ticket reviews could not: a state or rule one ticket added, crossed with another ticket's, and docs a later ticket left wrong. Verify every finding against the code before acting on it; apply each confirmed fix that keeps behaviour, with a test for each bug; list anything that would change behaviour under **Open questions** in the PR body. Verify, publish with `blast-it`, and `babysit` the PR until it settles. Done when it hands back a settled PR, or reports that the review found nothing worth changing (skip to step 3, carrying any open questions).
+1. **Review and consolidate.** Brief a reviewer subagent: run `spec-review` over the scope and its range `<base>..<head>`, publish with `blast-it`, and `babysit` the PR until it settles. Done when it hands back a settled PR, or reports that the review found nothing worth changing (skip to step 3, carrying any open questions).
 2. **Merge** the review PR.
 3. **Plan.** Brief a planner subagent: write a manual test plan with `test-plan` covering the scope and step 1's PR, pinned to the merged default-branch commit, saved outside the repository, with an observe case for each open question from step 1. Done when the plan file exists with case IDs, 📸 marks, observe cases, a restore checklist, and a report template.
 4. **Test.** Brief the tester subagent: run the plan with `execute-test-plan` at that commit, writing the report and evidence beside the plan. Answer its questions with `t3_pending_request`. Done when the report gives every case a result and its clean-up section is filled.

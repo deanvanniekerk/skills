@@ -9,7 +9,7 @@ This is a fictional example, not a record of a real run.
 ## Orchestrator log
 
 ```text
-1. Review   reviewer (claude-opus-5-5 high) → PR #51 "refactor(orders): one address validator", 1 open question (cancel after a partial refund?), babysat; handed back settled at 3f2a9c1
+1. Review   reviewer (claude-opus-5-5 high) → PR #51 "refactor(orders): consolidate the spec's address and status code", 1 open question (cancel after a partial refund?), babysat; handed back settled at 3f2a9c1
 2. Merge    #51 merged as 8d04e7b (repo merges with merge commits)
 3. Plan     planner (claude-opus-5-5 high) → ~/test-plans/orders-plan.md, 10 cases (1 observe), pinned to 8d04e7b
 4. Test     tester (gpt-6.1-sol high) → 7 PASS, 1 FAIL (ORD-02), 1 BLOCKED (ORD-09: mail sink not running), 1 OBSERVED (ORD-10)

@@ -2,7 +2,7 @@
 
 Put a spec through a full quality pass with one command, once its tickets have merged. Each ticket was already reviewed on its own (for example by `tackle-issue`); this pass checks the spec as a whole. The agent you start orchestrates; subagents do the work:
 
-1. A Claude Opus 5.5 subagent runs a thermo-nuclear code review over the spec's merged range, applies its fixes, opens a PR, and babysits it; the orchestrator merges it.
+1. A Claude Opus 5.5 subagent runs `spec-review` over the spec's merged range: it consolidates the code the tickets duplicated, harmonises it with the codebase, opens a PR, and babysits it; the orchestrator merges it.
 2. A second Opus subagent writes a manual test plan.
 3. A GPT-6.1 Sol subagent runs that plan in a browser.
 4. The orchestrator puts open questions and observations to you in one round.
@@ -17,9 +17,8 @@ npx skills@latest add deanvanniekerk/skills --skill quality-control -a codex -a 
 Install the skills it chains into the same project:
 
 ```bash
-npx skills@latest add deanvanniekerk/skills --skill blast-it --skill test-plan --skill execute-test-plan -a codex -a claude-code
+npx skills@latest add deanvanniekerk/skills --skill spec-review --skill blast-it --skill test-plan --skill execute-test-plan -a codex -a claude-code
 npx skills@latest add mattpocock/skills --skill implement --skill pr -a codex -a claude-code
-npx skills@latest add cursor/plugins --skill thermo-nuclear-code-quality-review -a codex -a claude-code
 npx skills@latest add thedotmack/claude-mem --skill babysit -a codex -a claude-code
 ```
 
@@ -37,7 +36,7 @@ The skill is user-invoked only; an agent never starts it on its own.
 
 ## Expected result
 
-Up to two merged PRs, one with the review fixes and one with the test fixes and the changes you decided, plus a test plan, a test report, and screenshot evidence saved outside the repository. Decisions already recorded in the issues and PRs stay as they are; anything that would change one comes to you as a question first. The final report lists each PR merged, the review findings applied, your decisions, PASS/FAIL/BLOCKED/OBSERVED counts, fixes shipped, plan corrections, the causes of BLOCKED cases, and anything left behind.
+Up to two merged PRs, one with the review's consolidations and fixes and one with the test fixes and the changes you decided, plus a test plan, a test report, and screenshot evidence saved outside the repository. Decisions already recorded in the issues and PRs stay as they are; anything that would change one comes to you as a question first. The final report lists each PR merged, the review findings applied, your decisions, PASS/FAIL/BLOCKED/OBSERVED counts, fixes shipped, plan corrections, the causes of BLOCKED cases, and anything left behind.
 
 It merges to the default branch without asking again, using the repository's usual merge method, and runs several high-effort agents, so expect a long and costly run.
 

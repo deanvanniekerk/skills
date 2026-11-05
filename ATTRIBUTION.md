@@ -1,6 +1,6 @@
 # Attribution and dependencies
 
-Dean van Niekerk maintains the seven skills in this repository. Publication preparation distinguished local custom skills from Skills CLI-managed upstream installations; the latter are deliberately not vendored into this collection.
+Dean van Niekerk maintains the eight skills in this repository. Publication preparation distinguished local custom skills from Skills CLI-managed upstream installations; the latter are deliberately not vendored into this collection.
 
 ## Adapted material
 
@@ -14,7 +14,6 @@ The inspected local installation recorded the `implement` folder Git tree hash `
 | --- | --- | --- |
 | [Matt Pocock](https://github.com/mattpocock/skills) | `pr`, `tdd`, `code-review`, `codebase-design`, `setup-matt-pocock-skills`, `implement` | Installed separately; provide PR writing, test discipline, local review, terminology, and project setup |
 | [thedotmack / claude-mem](https://github.com/thedotmack/claude-mem/tree/main/plugin/skills/babysit) | `babysit` | Installed separately; follow-up on PR checks and review threads |
-| [Cursor plugins](https://github.com/cursor/plugins/tree/main/thermos/skills/thermo-nuclear-code-quality-review) | `thermo-nuclear-code-quality-review` | Installed separately; `quality-control`'s strict maintainability review |
 
 Matt's `pr` skill in turn [credits Dex Horthy / HumanLayer's show-me material](https://github.com/mattpocock/skills/blob/main/skills/engineering/pr/CREDITS.md). That content remains in its upstream package and is not copied into this repository.
 
@@ -33,6 +32,7 @@ These are provenance records, not CLI version pins or end-to-end test results. C
 
 ## Related work and tools
 
+- [Cursor's thermo-nuclear code quality review](https://github.com/cursor/plugins/tree/main/thermos/skills/thermo-nuclear-code-quality-review) is the source of `spec-review`'s judo move and 1,000-line file bar. No text is copied, and it is not required.
 - [OpenAI's yeet](https://github.com/openai/skills/tree/main/skills/.curated/yeet) is a related GitHub publishing workflow used in Dean's environment. `blast-it` is maintained separately; `yeet` is neither bundled nor required.
 - [Vercel's Skills CLI](https://github.com/vercel-labs/skills) provides installation and discovery.
 - [Anthropic's Claude Code](https://code.claude.com/docs/en/cli-reference) performs the headless review.

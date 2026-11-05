@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- `spec-review`: new user-invoked skill. Consolidates a spec's merged tickets after agents built them independently: an inventory of everything the range adds with its siblings, judo moves that collapse duplicated code, harmonisation with the codebase, then seams, coverage and drift. Ships one behaviour-preserving PR with open questions for anything that would change behaviour. Replaces `thermo-nuclear-code-quality-review` as `quality-control`'s review step.
 - `quality-control`: runs at spec level once a spec's tickets merge. Briefs carry the scope's recorded decisions as binding and route open questions and observations to the user in one round before the fix PR; Decide sorts each FAIL into a fix, a plan correction or a product question. Briefs name skills by their installed absolute path, the tester runs in the checkout the plan names, merges use the repository's own merge method, and an unfinished handback resumes the same subagent.
 - `execute-test-plan`: uses the browser the environment provides, with Playwright as a disclosed fallback. Adds the OBSERVED result for observe cases and the evidence rules a built-in browser needs (saved PNG files, measured widths, fresh snapshots).
 - `test-plan`: adds observe cases for open questions and departures the work already records, fixes the screenshot marker as 📸, adds OBSERVED to the report template, and asks for a baseline that runs the tests rather than replaying a cache.
