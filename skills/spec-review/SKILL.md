@@ -9,7 +9,7 @@ license: MIT
 
 A spec's tickets were built by agents working independently, each reviewed against its own ticket. No agent saw the others' work, so the merged result usually solves the same idea two or three ways, each in its own style. Now the whole range is in view. **Consolidate** it: find the judo moves that make the duplicated code disappear, until the spec reads as if one author wrote it, the same author as the rest of the codebase.
 
-**Input**: the spec (a parent issue and its sub-issues) and the merged range `<base>..<head>`, where `<base>` is the default branch just before the spec's first PR. Resolve whichever the user gives you to both, and pin `<head>`.
+**Input**: the spec (a parent issue and its sub-issues, or one big issue alone) and the merged range `<base>..<head>`, where `<base>` is the default branch just before the spec's first PR. Resolve whichever the user gives you to both, and pin `<head>`.
 
 **Decisions** are the product choices the spec records: decision sections in the issues, Deviations in the PR bodies, the user's replies. They are binding. Consolidation keeps behaviour exactly as it is; anything that would change it goes under **Open questions** with a concrete scenario.
 

@@ -1,6 +1,6 @@
 # Tackle Spec
 
-Deliver a whole spec with one command: a parent issue and its sub-issues, from open tickets to a merged, quality-checked whole. The agent you start orchestrates; subagents do the work:
+Deliver a whole spec with one command: a parent issue and its sub-issues, from open tickets to a merged, quality-checked whole. It also takes a single big issue with no parent, and gives that one ticket the same tightening, delivery and quality pass. The agent you start orchestrates; subagents do the work:
 
 1. Tickets run in the order their blocking links allow, up to two at a time.
 2. Before each ticket starts, a Claude Opus 5.5 subagent re-checks it against the default branch as it now stands, and turns every open choice into a decision. Product questions come to you first.
@@ -22,6 +22,8 @@ The skill is user-invoked only; an agent never starts it on its own.
 > /tackle-spec #746
 
 > /tackle-spec #767, three tickets at a time
+
+> /tackle-spec #812 (one big ticket, no parent)
 
 ## Expected result
 
