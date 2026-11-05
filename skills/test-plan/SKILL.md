@@ -10,7 +10,7 @@ A test plan is a handoff to a tester who starts cold. Provide the blocking facts
 
 ## Investigate
 
-- **Scope:** read the PRs, issues, specifications, follow-up changes, and relevant implementation. Record a commit SHA and map each requirement to a case. If the spec and implementation disagree, expose the discrepancy rather than redefining the expected result to match the code.
+- **Scope:** read the PRs, issues, specifications, follow-up changes, and relevant implementation. Record a commit SHA and map each requirement to a case. If the spec and implementation disagree, expose the discrepancy rather than redefining the expected result to match the code. A departure the work already records (a PR's Deviations, a review reply, a later commit) is a decision to confirm, not a defect: give it an **observe case**. So is every open question the scope raises.
 - **Environment:** find setup, database reset/seed, dev ports, and the settings that keep mail, payment, and webhook effects local. List commands for the tester; this planning task does not run resets or migrations.
 - **Roles:** derive sign-in and second-factor steps from the test setup. Use disposable local seed accounts. Reference the approved retrieval mechanism for real credentials; do not copy secrets, production access tokens, or personal data into the plan.
 - **Records:** identify reproducible seeded or synthetic records and their relevant relationships. Describe how to discover IDs when generated values change. List unreachable/API-only surfaces and exact API calls where needed.
@@ -26,15 +26,15 @@ Produce one Markdown document with:
 2. **Tester rules:** code remains unchanged; use the UI unless a case calls for an API; record evidence and restore test data. Refer to protected real accounts by role or fixture exclusion, not by disclosing unnecessary personal details.
 3. **Environment:** exact setup and local-only side-effect configuration, sign-in by role, API helper, and ID discovery. Flag destructive reset commands and specify the disposable target.
 4. **Cast:** synthetic accounts and records, roles, relationships, and relevant facts.
-5. **Automated baseline:** check command, expected result, known flakes, and rerun guidance.
-6. **Feature suites:** setup, stable case IDs, actor, steps, expected result, evidence, and restore. Cover happy paths, UI and API permission boundaries, validation/refusals, persistence, adjacent surfaces, and specified edge cases. Quote exact API messages only when confirmed in source. If a UI label differs, the tester should find the control by purpose and log a plan correction; wrong behavior still fails.
+5. **Automated baseline:** a check command that runs the tests rather than replaying a build cache, expected result, known flakes, and rerun guidance.
+6. **Feature suites:** setup, stable case IDs, actor, steps, expected result, evidence, and restore. Cover happy paths, UI and API permission boundaries, validation/refusals, persistence, adjacent surfaces, and specified edge cases. An observe case states what to look at and record, with no expected result; the tester marks it OBSERVED. Quote exact API messages only when confirmed in source. If a UI label differs, the tester should find the control by purpose and log a plan correction; wrong behavior still fails.
 7. **Cross-cutting cases:** applicable role/control matrix, responsive and theme behavior, and help/docs changes. Omit surfaces the product does not have.
 8. **Automated-only coverage:** each item links to its covering test, or is explicitly a gap.
 9. **Restore checklist:** cleanup steps and command/SQL spot checks limited to the disposable environment. Direct DB edits need a named target and inverse operation.
-10. **Report template:** build/commit, baseline, `ID | PASS/FAIL/BLOCKED | evidence | notes`, failure details, and plan corrections.
+10. **Report template:** build/commit, baseline, `ID | PASS/FAIL/BLOCKED/OBSERVED | evidence | notes`, failure details, observations, and plan corrections.
 
-Mark cases needing screenshots. State expected behavior independently of incidental wording or layout. See [examples.md](examples.md) for a synthetic handoff excerpt.
+Mark cases needing screenshots with 📸. State expected behavior independently of incidental wording or layout. See [examples.md](examples.md) for a synthetic handoff excerpt.
 
 ## Deliver
 
-Save the Markdown to the user's requested destination, or an accessible local output directory outside the application repository. Report the path, suite/case counts, unresolved setup facts, direct data edits, and automated-only items. If the user requested a rendered or shared page, render that same source and provide its location; sharing or public publication is not implied by a request for a test plan. No test case has been executed unless separately requested and actually run.
+Save the Markdown to the user's requested destination, or an accessible local output directory outside the application repository. Report the path, suite/case counts, observe cases, unresolved setup facts, direct data edits, and automated-only items. If the user requested a rendered or shared page, render that same source and provide its location; sharing or public publication is not implied by a request for a test plan. No test case has been executed unless separately requested and actually run.

@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- `quality-control`: runs at spec level once a spec's tickets merge. Briefs carry the scope's recorded decisions as binding and route open questions and observations to the user in one round before the fix PR; Decide sorts each FAIL into a fix, a plan correction or a product question. Briefs name skills by their installed absolute path, the tester runs in the checkout the plan names, merges use the repository's own merge method, and an unfinished handback resumes the same subagent.
+- `execute-test-plan`: uses the browser the environment provides, with Playwright as a disclosed fallback. Adds the OBSERVED result for observe cases and the evidence rules a built-in browser needs (saved PNG files, measured widths, fresh snapshots).
+- `test-plan`: adds observe cases for open questions and departures the work already records, fixes the screenshot marker as 📸, adds OBSERVED to the report template, and asks for a baseline that runs the tests rather than replaying a cache.
 - `quality-control`: new user-invoked skill for T3 Code. Orchestrates a thermo-nuclear review and fix PR, a test plan, a headless browser test run, and a fix PR for failures; subagents own and babysit their PRs, and the orchestrator merges each once settled.
 - `execute-test-plan`: new skill. Runs a written test plan in a headless Playwright browser with screenshot evidence, restores test data, and removes its Playwright install when done.
 - `claude-code-pr-review`: focus on concrete defects, make nits opt-in, deduplicate against freshly fetched discussions before posting, and keep local receipts with measured runtime and finding dispositions.

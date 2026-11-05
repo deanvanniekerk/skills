@@ -5,8 +5,8 @@ Portable agent workflows for implementing, reviewing, publishing, and testing co
 | Skill | What it does |
 | --- | --- |
 | [test-plan](skills/test-plan/README.md) | Writes a manual QA plan |
-| [execute-test-plan](skills/execute-test-plan/README.md) | Runs a test plan in a headless browser and fills in its report |
-| [quality-control](skills/quality-control/README.md) | Orchestrates review, test plan, browser test run, and fix PRs over shipped work (T3 Code) |
+| [execute-test-plan](skills/execute-test-plan/README.md) | Runs a test plan in a browser and fills in its report |
+| [quality-control](skills/quality-control/README.md) | Orchestrates a spec-level review, test plan, browser test run, and fix PRs once a spec's tickets merge (T3 Code) |
 | [prune-tests](skills/prune-tests/README.md) | Audits or removes low-value tests |
 | [claude-code-pr-review](skills/claude-code-pr-review/README.md) | Runs Claude Code review and posts validated findings |
 | [blast-it](skills/blast-it/README.md) | Commits, pushes, and opens or updates a PR |
@@ -36,7 +36,7 @@ Ask your agent:
 
 > Use execute-test-plan on that plan.
 
-> /quality-control on PRs 41 and 42
+> /quality-control on spec 40
 
 > Use tackle-issue on issue 42.
 
