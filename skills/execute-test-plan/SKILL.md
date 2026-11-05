@@ -7,7 +7,7 @@ license: MIT
 # Execute Test Plan
 
 1. **Read** the plan fully, then start the apps it names.
-2. **Run** every case in plan order by driving the app in a browser. Record PASS / FAIL / BLOCKED, and OBSERVED for an observe case, which has no pass/fail. Wrong behaviour is a FAIL; a label or placement that differs from the plan is a plan correction. A case you cannot drive is BLOCKED with the exact error.
+2. **Run** every case in plan order by driving the app in a browser. Record PASS / FAIL / BLOCKED, and OBSERVED for an observe case, which has no pass/fail. Wrong behaviour is a FAIL; a label or placement that differs from the plan is a plan correction. A case you cannot drive is BLOCKED with the exact error, including a timed touch gesture (double-tap) that a simulator's device tool sends too slowly to register.
 3. **Clean up** as below.
 4. **Report** in the plan's report template, saved where the plan or your brief says, and return it as your final message.
 

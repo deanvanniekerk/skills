@@ -15,7 +15,7 @@ You take one spec, a parent issue and its sub-issues, from open tickets to a mer
 
 `quality-control` brings its own roles. Start each subagent with `delegate_task`, `isolation: "worktree"`, and the target above. If a named model is unavailable, tell the user and stop. A brief names each skill to follow by the absolute path of its installed `SKILL.md`: the project's `.agents/skills/<name>/` or the global `~/.agents/skills/<name>/`.
 
-Settle and merge every PR as `quality-control`'s **Babysit** section says: the subagent that opened it babysits it, an unfinished handback resumes the same subagent, and you merge with the repository's own merge method once it is **Settled**.
+Settle and merge every PR as `quality-control`'s **Babysit** section says: the subagent that opened it fixes what review and CI raise, you watch it, an unfinished handback resumes the same subagent, and you merge with the repository's own merge method once it is **Settled**.
 
 ## The ticket graph
 

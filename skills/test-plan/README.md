@@ -20,7 +20,7 @@ The skill reads code, specifications, and fixture definitions. It does not reset
 
 ## Expected result
 
-A Markdown plan pinned to a commit, with requirement-to-case mapping, setup, synthetic test accounts, feature suites, permission matrix, automated-only coverage, restore checklist, and a pass/fail/blocked/observed report template. Open questions, and departures the work already records, become observe cases: the tester records what happens rather than passing or failing it. It also reports unresolved facts and direct data edits the later run would require.
+A Markdown plan pinned to a commit, with requirement-to-case mapping, setup, synthetic test accounts, feature suites, permission matrix, automated-only coverage, restore checklist, and a pass/fail/blocked/observed report template. Open questions, and departures the work already records that a user can see, become observe cases: the tester records what happens rather than passing or failing it. It also reports unresolved facts and direct data edits the later run would require.
 
 Disposable seed credentials may be documented when they are intentionally public test data. Real credentials are referenced through their approved retrieval mechanism; personal records and production secrets do not belong in a portable handoff. A source-derived plan is not evidence that its test cases passed.
 

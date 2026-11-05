@@ -2,11 +2,11 @@
 
 Put a spec through a full quality pass with one command, once its tickets have merged. [tackle-spec](../tackle-spec/README.md) runs it as its last stage. Each ticket was already reviewed on its own (for example by `tackle-issue`); this pass checks the spec as a whole. The agent you start orchestrates; subagents do the work:
 
-1. A Claude Opus 5.5 subagent runs `spec-review` over the spec's merged range: it consolidates the code the tickets duplicated, harmonises it with the codebase, opens a PR, and babysits it; the orchestrator merges it.
+1. A Claude Opus 5.5 subagent runs `spec-review` over the spec's merged range: it consolidates the code the tickets duplicated, harmonises it with the codebase, opens a PR, and fixes what review and CI raise; the orchestrator watches it and merges it once settled.
 2. A second Opus subagent writes a manual test plan.
 3. A GPT-6.1 Sol subagent runs that plan in a browser.
 4. The orchestrator puts open questions and observations to you in one round.
-5. If the run found failures, or you asked for changes, a third Opus subagent fixes them, opens a PR, and babysits it; the orchestrator merges it.
+5. If the run found failures, or you asked for changes, a third Opus subagent fixes them, opens a PR, and fixes what review and CI raise; the orchestrator watches it and merges it once settled.
 
 ## Install
 

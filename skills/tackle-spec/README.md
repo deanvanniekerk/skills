@@ -4,7 +4,7 @@ Deliver a whole spec with one command: a parent issue and its sub-issues, from o
 
 1. Tickets run in the order their blocking links allow, up to two at a time.
 2. Before each ticket starts, a Claude Opus 5.5 subagent re-checks it against the default branch as it now stands, and turns every open choice into a decision. Product questions come to you first.
-3. A second Opus subagent tackles the ticket with `tackle-issue`, then babysits its PR; the orchestrator merges it once settled.
+3. A second Opus subagent tackles the ticket with `tackle-issue`, then fixes what review and CI raise on its PR; the orchestrator watches it and merges it once settled.
 4. Once every ticket has merged, the orchestrator runs `quality-control` over the spec: `spec-review` consolidates the code the tickets duplicated, then a test plan, a browser test run, and a fix PR.
 
 ## Install
