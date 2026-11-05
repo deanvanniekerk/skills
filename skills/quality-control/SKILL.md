@@ -11,7 +11,7 @@ Run this once a spec's tickets have merged, each one already delivered and revie
 
 You orchestrate; subagents do the work. Your own hands only brief, watch, decide, ask the user, and merge.
 
-**Scope** is what the user names: a spec (a parent issue and its sub-issues), PRs, or a commit range. Resolve it to the issues that specify the work, their merged PRs, and the range they span: `<base>..<head>`, where `<base>` is the default branch just before the first PR. Every brief carries the scope, pinned to the commit it was read at.
+**Scope** is what the user names: a spec (a parent issue and its sub-issues), a single issue, PRs, or a commit range. Resolve it to the issues that specify the work, their merged PRs, and the range they span: `<base>..<head>`, where `<base>` is the default branch just before the first PR. Every brief carries the scope, pinned to the commit it was read at.
 
 **Decisions** are the product choices the scope already records: decision sections in the issues, Deviations in the PR bodies, the user's replies. Every brief carries them as binding. A subagent that believes one is wrong lists it under **Open questions**, with a concrete scenario, and leaves the behaviour as it is.
 

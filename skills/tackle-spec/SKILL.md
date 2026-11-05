@@ -1,13 +1,13 @@
 ---
 name: tackle-spec
-description: "Deliver a spec issue end to end: tighten and tackle each sub-issue with tackle-issue in a subagent, merging each PR once settled, then run quality-control over the whole spec."
+description: "Deliver a spec issue end to end, or one big issue with no parent: tighten and tackle each ticket with tackle-issue in a subagent, merging each PR once settled, then run quality-control over the whole of it."
 disable-model-invocation: true
 license: MIT
 ---
 
 # Tackle Spec
 
-You take one spec, a parent issue and its sub-issues, from open tickets to a merged, quality-checked whole. Subagents tighten and tackle the tickets; your own hands only sequence, brief, ask the user, merge, and finish with quality control.
+You take one spec, a parent issue and its sub-issues, from open tickets to a merged, quality-checked whole. An issue with no sub-issues is a spec of one ticket: the same steps run on that issue alone, for a big ticket that earns the full pass. Subagents tighten and tackle the tickets; your own hands only sequence, brief, ask the user, merge, and finish with quality control.
 
 | Role | Agent |
 | --- | --- |
@@ -19,7 +19,7 @@ Settle and merge every PR as `quality-control`'s **Babysit** section says: the s
 
 ## The ticket graph
 
-Read the parent and every sub-issue (`gh api repos/<owner>/<repo>/issues/<n>/sub_issues`), with the blocking edges each declares: GitHub's blocked-by links (`gh api repos/<owner>/<repo>/issues/<n>/dependencies/blocked_by`), or "Blocked by #n" in its body. Closed sub-issues are done. A ticket is **ready** once every ticket blocking it has merged. Done when every open sub-issue sits in the graph; a ticket whose order the issues do not settle is a question for the user.
+Read the parent and every sub-issue (`gh api repos/<owner>/<repo>/issues/<n>/sub_issues`), with the blocking edges each declares: GitHub's blocked-by links (`gh api repos/<owner>/<repo>/issues/<n>/dependencies/blocked_by`), or "Blocked by #n" in its body. Closed sub-issues are done. A ticket is **ready** once every ticket blocking it has merged. Done when every open sub-issue sits in the graph; a ticket whose order the issues do not settle is a question for the user. With no sub-issues, the graph is the issue itself.
 
 Run up to two ready tickets at once, or the number the user gives. Tell each implementer which files the other running ticket edits, so it merges the default branch and reverifies before handing back.
 
@@ -47,4 +47,4 @@ Tell the user:
 - the decisions they made along the way;
 - `quality-control`'s report.
 
-Leave the parent issue open: closing the spec is the user's call.
+Leave the parent issue open: closing the spec is the user's call. A single issue closes with its own PR, as any ticket does.
