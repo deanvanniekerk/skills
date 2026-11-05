@@ -19,6 +19,7 @@ This excerpt has no repository evidence for those setup commands, so environment
 | ORD-01 | Manager attempts confirmation of incomplete-address order | Validation refusal; order remains draft | Capture refusal and persisted state; restore any edited fixture fields |
 | ORD-02 | Manager confirms complete-address order | Order becomes confirmed and remains confirmed after reload | Capture state before/after reload; use the project's disposable-fixture reset |
 | ORD-03 | A role without confirmation permission calls the documented confirmation API | API refuses; order unchanged | Record status/body; no data cleanup if refusal succeeded |
+| ORD-04 📸 | Manager opens the orders list at 1280 px (observe: the PR's Deviations narrowed the Cancel column) | Record whether the table scrolls sideways and whether Cancel is visible without scrolling | Screenshot; nothing to restore |
 
 The full plan supplies the confirmed API endpoint/payload, exact refusal contract, role login procedure, fixture reset, and spot checks for the target project. It names actual automated coverage for concurrency and records a coverage gap if none exists.
 
@@ -27,8 +28,9 @@ The full plan supplies the confirmed API endpoint/payload, exact refusal contrac
 ```text
 Commit/build:
 Environment and baseline:
-ID | PASS/FAIL/BLOCKED | evidence | notes
+ID | PASS/FAIL/BLOCKED/OBSERVED | evidence | notes
 Failures:
+Observations:
 Plan corrections:
 Restore completed / remaining:
 ```
