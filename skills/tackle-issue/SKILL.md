@@ -19,6 +19,8 @@ Run one issue through implementation → simplification → pruning → local re
 
 Make routine implementation choices from the issue and repository guidance and record them. The user's request authorizes this delivery sequence. Record test seams before using `tdd`; this workflow delegates routine seam selection to the implementing agent. Respect explicit user constraints, host permissions, and repository approval requirements. Stop when requirements are materially ambiguous, credentials or tools are unavailable, verification fails, or an action exceeds the requested delivery scope. A judgment call does not substitute for an actual permission grant.
 
+Wait on your own commands in the foreground. One that outlasts a tool call's time limit runs in the background and writes an exit marker, and you wait for that marker in the foreground; the turn ends only with your report.
+
 ## 1. Implement, simplify, and prune
 
 Implement the acceptance criteria using `tdd` at the chosen public boundaries, running targeted tests and typechecking during development.
@@ -51,8 +53,10 @@ Apply `babysit`. Verify findings against the code, fix valid issues, run checks,
 
 Record Claude finding dispositions and fix commits in its receipt as they become known. Treat optional nits as suggestions, not release gates or automatic requests to add tests; preserve the test-pruning standard.
 
+**Delegated mode.** When an orchestrator briefs you to hand the PR back for it to watch, as `tackle-spec` and `quality-control` do, follow-up is one pass: fix the comments and failures already on the PR, push, reply to and resolve each thread you answered, and hand back with checks or the automated review still running. Watching the PR is the orchestrator's job.
+
 If the PR closes or merges externally, a required human review is the only remaining condition, infrastructure is unavailable, or the same blocker recurs after two attempted remedies, report the state and required action instead of looping indefinitely. Report changes made and outstanding conditions; never label a blocked PR merge-ready. Future/background monitoring requires a host-supported monitor and the user's authorization.
 
 ## Completion
 
-Finish when the latest head has acceptable checks/reviews and no actionable findings or unresolved threads under `babysit`'s criteria. Report the issue, PR URL, head SHA, implementation summary, checks, pruning counts, findings fixed/refuted/outstanding, and Claude review outcome/receipt path (including any skip reason). State the phase and reason if blocked. Do not merge the PR as part of this skill.
+Finish when the latest head has acceptable checks/reviews and no actionable findings or unresolved threads under `babysit`'s criteria; in delegated mode, when the one follow-up pass is pushed. Report the issue, PR URL, head SHA, implementation summary, checks, pruning counts, findings fixed/refuted/outstanding, and Claude review outcome/receipt path (including any skip reason). State the phase and reason if blocked. Do not merge the PR as part of this skill.

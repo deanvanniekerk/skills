@@ -3,8 +3,8 @@
 Deliver a whole spec with one command: a parent issue and its sub-issues, from open tickets to a merged, quality-checked whole. It also takes a single big issue with no parent, and gives that one ticket the same check, delivery and quality pass. The agent you start orchestrates; subagents do the work:
 
 1. Tickets run in the order their blocking links allow, up to two at a time.
-2. Before each ticket starts, a Claude Opus 5.5 subagent checks it against the default branch as it now stands for red flags: product questions, premises the code contradicts, and names later tickets rely on. Product questions come to you first; the settled flags become the ticket's binding Decisions, and the rest of the ticket stays a plan the implementer may depart from.
-3. A second Opus subagent tackles the ticket with `tackle-issue`, then fixes what review and CI raise on its PR; the orchestrator watches it and merges it once settled.
+2. Before the first ticket starts, a Claude Opus 5.5 subagent per ticket checks it against the default branch for red flags: product questions, premises the code contradicts, and names later tickets rely on. Every product question comes to you in one round, asked in a message so merging carries on while you decide; the settled flags become each ticket's binding Decisions, and the rest of the ticket stays a plan the implementer may depart from.
+3. A second Opus subagent tackles each ticket with `tackle-issue` as one PR, makes one pass over what review and CI raise, and tears down any local environment it started; the orchestrator watches the PR and merges it once settled. Tickets that each add a database migration run one after the other.
 4. Once every ticket has merged, the orchestrator runs `quality-control` over the spec: `spec-review` consolidates the code the tickets duplicated, then a test plan, a browser test run, and a fix PR.
 
 ## Install
@@ -27,7 +27,7 @@ The skill is user-invoked only; an agent never starts it on its own.
 
 ## Expected result
 
-Every sub-issue closed by its own merged PR, with each ticket checked for red flags before it started, then a spec-review PR, a test plan, a test report, and a fix PR from `quality-control`. You answer product questions in batches as they come up. The parent issue stays open for you to close.
+Every sub-issue closed by its own merged PR, with each ticket checked for red flags before it started, then a spec-review PR, a test plan, a test report, and a fix PR from `quality-control`. You answer product questions in one round at the start, plus any that surface later. The parent issue stays open for you to close.
 
 It merges to the default branch without asking again and runs many high-effort agents, so expect a long and costly run.
 

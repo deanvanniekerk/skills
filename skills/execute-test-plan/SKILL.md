@@ -6,8 +6,8 @@ license: MIT
 
 # Execute Test Plan
 
-1. **Read** the plan fully, then start the apps it names.
-2. **Run** every case in plan order by driving the app in a browser. Record PASS / FAIL / BLOCKED, and OBSERVED for an observe case, which has no pass/fail. Wrong behaviour is a FAIL; a label or placement that differs from the plan is a plan correction. A case you cannot drive is BLOCKED with the exact error, including a timed touch gesture (double-tap) that a simulator's device tool sends too slowly to register.
+1. **Read** the plan fully, then start the apps it names. With a lane in your brief, the run is that lane's suites only.
+2. **Run** every case of your run in plan order by driving the app in a browser. Record PASS / FAIL / BLOCKED, and OBSERVED for an observe case, which has no pass/fail. Wrong behaviour is a FAIL; a label or placement that differs from the plan is a plan correction. A case you cannot drive is BLOCKED with the exact error, including a gesture whose timing the device tool cannot hold, such as a simulator double-tap.
 3. **Clean up** as below.
 4. **Report** in the plan's report template, saved where the plan or your brief says, and return it as your final message.
 
@@ -15,7 +15,7 @@ Application code stays unchanged; nothing is committed or pushed. Prefix every r
 
 ## Browser
 
-Use the browser tool your environment provides. With none, set one up from [playwright.md](playwright.md).
+Use the browser tool your environment provides. With none, or when it fails on its first three tries, set one up from [playwright.md](playwright.md).
 
 - Sign in through the UI and use the real controls; assert what is rendered.
 - Evidence is a PNG file at `<evidence>/<case ID>.png`, for every 📸 case and every FAIL, taken once the expected result is on screen. Save it and copy it there; a screenshot shown only inline is not evidence.
@@ -26,8 +26,9 @@ Use the browser tool your environment provides. With none, set one up from [play
 
 ## Clean up
 
-- Work through the plan's restore checklist. Put every setting you changed back to its original, such as a role, an assignment or a note.
-- Remove your `QA ` records the way a user would, such as cancelling a document in the UI. Delete one directly only after the plan's checks show nothing references it.
-- Stop every server you started. Close every browser tab you opened and reset the colour scheme; with the Playwright fallback, remove it as that file says.
+- Stop every server you started, by its PID.
+- **Disposable environment:** run the plan's teardown command. Its records, settings and test data go with it, so restore nothing.
+- **Shared or persistent environment:** work through the plan's restore steps. Put every setting you changed back to its original, such as a role, an assignment or a note, and remove your `QA ` records the way a user would, such as cancelling a document in the UI. Delete one directly only after the plan's checks show nothing references it.
+- Close every browser tab you opened and reset the colour scheme; with the Playwright fallback, remove it as that file says.
 - Keep the report and the evidence screenshots.
-- List in the report what you cleaned up and anything you had to leave behind.
+- List in the report what you tore down or restored, and anything you had to leave behind.
