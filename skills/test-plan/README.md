@@ -1,6 +1,6 @@
 # Test Plan
 
-Write a manual QA handoff that another tester can execute without knowing the codebase. The plan provides concrete environment, role, fixture, API, expected-result, and restore details.
+Write a manual QA handoff that another tester can execute without knowing the codebase. The plan provides concrete environment, role, fixture, API, and expected-result details.
 
 ## Install
 
@@ -14,13 +14,13 @@ No other skills are required. Give the agent repository/spec access and GitHub a
 
 > Use test-plan for PR 42. Write a Markdown handoff for another testing agent. Do not execute it.
 
-> Prepare a test plan for everything since the last release tag, including role boundaries and restore steps. Save it in my chosen output directory.
+> Prepare a test plan for everything since the last release tag, including role boundaries. It runs on local slots. Save it in my chosen output directory.
 
 The skill reads code, specifications, and fixture definitions. It does not reset a database, drive the application, send mail, or execute the resulting cases. If you also want execution, ask separately. Public/shared rendering is opt-in.
 
 ## Expected result
 
-A Markdown plan pinned to a commit, with requirement-to-case mapping, setup, synthetic test accounts, feature suites, permission matrix, automated-only coverage, restore checklist, and a pass/fail/blocked/observed report template. Open questions, and departures the work already records, become observe cases: the tester records what happens rather than passing or failing it. It also reports unresolved facts and direct data edits the later run would require.
+A Markdown plan pinned to a commit, with requirement-to-case mapping, setup, synthetic test accounts, feature suites, permission matrix, automated-only coverage, lanes for a large plan when the repository can run local slots side by side, and a pass/fail/blocked/observed report template. The run restores no data: it ends by tearing down its disposable environment, such as releasing its slot, and in a shared one the tester puts back the settings its cases changed. Open questions, and departures the work already records that a user can see, become observe cases: the tester records what happens rather than passing or failing it. It also reports unresolved facts and direct data edits the later run would require.
 
 Disposable seed credentials may be documented when they are intentionally public test data. Real credentials are referenced through their approved retrieval mechanism; personal records and production secrets do not belong in a portable handoff. A source-derived plan is not evidence that its test cases passed.
 
