@@ -8,7 +8,7 @@ Feature: confirm an order with delivery-address validation. Pin the actual revie
 
 ## Cast and environment
 
-Use a disposable local fixture account with the order-manager role. Select one draft order with a complete address and another missing a required address field. Record how the target project's seed command creates them and how to look up their IDs. Configure mail/webhooks to the project's local sink before execution. The run leaves the data as its last case does, so every order and account it creates is prefixed `QA `.
+Use a disposable local fixture account with the order-manager role. Select one draft order with a complete address and another missing a required address field. Record how the target project's seed command creates them and how to look up their IDs. Configure mail/webhooks to the project's local sink before execution. The run uses a local slot and restores no data: every order and account it creates is prefixed `QA `, and its teardown is releasing that slot.
 
 This excerpt has no repository evidence for those setup commands, so environment setup is **BLOCKED** until supplied. It does not invent a seed command, login, or port.
 
@@ -34,4 +34,5 @@ Failures:
 Observations:
 Plan corrections:
 Records created or edited directly:
+Torn down:
 ```

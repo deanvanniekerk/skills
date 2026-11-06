@@ -4,7 +4,7 @@ Put a spec through a full quality pass with one command, once its tickets have m
 
 1. A Claude Opus 5.5 subagent runs `spec-review` over the spec's merged range: it consolidates the code the tickets duplicated, harmonises it with the codebase, opens a PR, and fixes what review and CI raise; the orchestrator watches it and merges it once settled.
 2. A second Opus subagent writes a manual test plan, split into up to three lanes when it is large and the repository can run local slots side by side.
-3. A GPT-6.1 Sol subagent per lane runs that plan in a browser, each on its own slot, and leaves the data as the run left it.
+3. A GPT-6.1 Sol subagent per lane runs that plan in a browser, each on its own slot, which it releases when done, with no data restore.
 4. The orchestrator puts open questions and observations to you in one round, in a message.
 5. If the run found failures, a third Opus subagent starts fixing them at once, and the changes you ask for follow it. It opens a PR and fixes what review and CI raise; the orchestrator watches it and merges it once settled.
 

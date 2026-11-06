@@ -26,7 +26,9 @@ Use the browser tool your environment provides. With none, or when it fails on i
 
 ## Finish
 
-- Leave the environment's data and settings as the last case left them: no teardown and no restore.
+- Restore no data.
 - Stop every server you started, by its PID. Close every browser tab you opened and reset the colour scheme you changed; with the Playwright fallback, remove it as that file says.
 - Keep the report and the evidence screenshots.
-- List in the report the records you created and any data you edited directly.
+- **Disposable environment,** such as a slot: once the report and evidence are saved, run the plan's teardown command, such as releasing the slot.
+- **Shared environment:** put back each setting a case changed, such as a role or an assignment; leave the `QA ` records.
+- List in the report the records you created, any data you edited directly, and the teardown.
