@@ -5,7 +5,7 @@ Put a spec through a full quality pass with one command, once its tickets have m
 1. A Claude Opus 5.5 subagent runs `spec-review` over the spec's merged range: it consolidates the code the tickets duplicated, harmonises it with the codebase, opens a PR, and fixes what review and CI raise; the orchestrator watches it and merges it once settled.
 2. A second Opus subagent writes a manual test plan, split into up to three lanes when it is large and the repository can run local slots side by side.
 3. A GPT-6.1 Sol subagent per lane runs that plan in a browser, each on its own slot, which it releases when done, with no data restore.
-4. The orchestrator puts open questions and observations to you in one round, in a message.
+4. The orchestrator decides open questions and observations with a clear route itself, and puts the real forks to you in one round, in a message.
 5. If the run found failures, a third Opus subagent starts fixing them at once, and the changes you ask for follow it. It opens a PR and fixes what review and CI raise; the orchestrator watches it and merges it once settled.
 
 ## Install
@@ -36,7 +36,7 @@ The skill is user-invoked only; an agent never starts it on its own.
 
 ## Expected result
 
-Up to two merged PRs, one with the review's consolidations and fixes and one with the test fixes and the changes you decided, plus a test plan, a test report, and screenshot evidence saved outside the repository. Decisions already recorded in the issues and PRs stay as they are; anything that would change one comes to you as a question first. The final report lists each PR merged, the review findings applied, your decisions, PASS/FAIL/BLOCKED/OBSERVED counts, fixes shipped, plan corrections, the causes of BLOCKED cases, and anything left behind.
+Up to two merged PRs, one with the review's consolidations and fixes and one with the test fixes and the changes you decided, plus a test plan, a test report, and screenshot evidence saved outside the repository. Decisions already recorded in the issues and PRs stay as they are; anything that would change one comes to you as a question first. The final report lists each PR merged, the review findings applied, your decisions, the decisions it made for you, PASS/FAIL/BLOCKED/OBSERVED counts, fixes shipped, plan corrections, the causes of BLOCKED cases, and anything left behind.
 
 It merges to the default branch without asking again, using the repository's usual merge method, and runs several high-effort agents, so expect a long and costly run.
 

@@ -28,9 +28,11 @@ A brief names each skill to follow by the absolute path of its installed `SKILL.
 
 The subagent that blasts a PR owns its fixes: it makes one `babysit` pass on that PR, as `tackle-issue`'s delegated mode says, addresses every review comment and failing check already there, and hands back ending with `PR <url>, head <sha>, checks and reviews <state>`. Waiting is yours: the subagent hands back rather than watching or polling the PR, so a handback with checks or the automated review still running is complete.
 
-**Settled**: checks pass (or the repo has none), the automated review finished on the current head, no unresolved actionable threads, and GitHub reports it mergeable.
+**Settled**: checks pass (or the repo has none), the automated review finished on the PR, no unresolved actionable threads, its head contains the default branch, and GitHub reports it mergeable. The automated review runs once per PR: request no second one. Read any commit pushed after it, a merge of the default branch or an answer to review, yourself before merging, and wait only for a review that runs on its own for the new head.
 
-A handback without the PR line is unfinished. One that says it is waiting on its own background command resumes by itself when that command finishes: leave it. One that stopped with nothing running gets a `t3_thread_send` to continue, so it keeps its context. Check a full handback against **Settled** yourself. Not settled yet: `watch_pull_request`, and send each new comment or failure to that same subagent; the fixes stay its job. Settled: merge with the repo's merge method (match recent merges on the default branch), `gh pr merge <n> --<method> --delete-branch --match-head-commit <sha>`, then `unwatch_pull_request` if you watched.
+A handback without the PR line is unfinished. One that says it is waiting on its own background command resumes by itself when that command finishes: leave it. One that stopped with nothing running gets a `t3_thread_send` to continue, so it keeps its context. Check a full handback against **Settled** yourself. A head that lacks the default branch (`git merge-base --is-ancestor origin/<default> <sha>` after a fetch) goes back to the same subagent to merge it and reverify: GitHub's mergeable flag says the two sides merge, not that the result builds. Any other unsettled PR: `watch_pull_request`, and send each new comment or failure to that same subagent; the fixes stay its job. Settled: merge with the repo's merge method (match recent merges on the default branch), `gh pr merge <n> --<method> --delete-branch --match-head-commit <sha>`, then `unwatch_pull_request` if you watched.
+
+**Deciding.** Settle a product question yourself when its route is clear: one option follows from the spec, a recorded decision, or the pattern the code already uses, and taking it keeps the scope the user agreed. Record it where the user's answer would have gone, and keep a list of what you decided for the report. A **fork** goes to the user: a question that adds or drops scope, reverses a recorded decision, or whose options each have a fair case. When unsure, it is a fork.
 
 **Asking the user.** While any subagent is still running, put questions to the user in your reply rather than a blocking question tool, so handbacks still reach you and settled PRs keep merging while the user decides.
 
@@ -43,10 +45,10 @@ A handback without the PR line is unfinished. One that says it is waiting on its
 5. **Decide.** Read the report and step 1's open questions, and sort each item:
    - A FAIL from a defect is a fix.
    - A FAIL where the plan expected what a recorded decision since changed is a plan correction; note it for the user.
-   - An OBSERVED case, an open question, or a FAIL that disputes the spec is a product question. Put them all to the user in one round, each with its scenario, the options, and your recommendation. Each decision that asks for a change is a fix.
+   - An OBSERVED case, an open question, or a FAIL that disputes the spec is a product question: settle it as **Deciding** says, and put the forks to the user in one round, each with its scenario, the options, and your recommendation. Each decision that asks for a change is a fix.
    - A BLOCKED case from the environment is noted for the user.
 
-   A defect FAIL needs no answer: brief the fixer on those at once (step 6) and send it the user's change decisions when they arrive. No fixes: go to step 8.
+   A defect FAIL needs no answer: brief the fixer on those at once (step 6), with your own change decisions, and send it the user's when they arrive. No fixes: go to step 8.
 6. **Fix.** Brief a fixer subagent with each fix as its spec (a FAIL's steps, expected vs actual and screenshot path; a decision with its scenario): follow `implement`, publish with `blast-it`, and `babysit` it as **Babysit** says. Decisions that arrive later go to the same fixer, on the same PR. Done when its PR is **Settled** with every fix in it.
 7. **Merge** the fix PR.
-8. **Report** to the user: each PR merged (link and merge commit), review findings applied, the user's decisions, test counts (PASS/FAIL/BLOCKED/OBSERVED), fixes shipped, plan corrections, BLOCKED causes, and anything left behind in data or environment.
+8. **Report** to the user: each PR merged (link and merge commit), review findings applied, the user's decisions, the decisions you made for the user (each marked as yours), test counts (PASS/FAIL/BLOCKED/OBSERVED), fixes shipped, plan corrections, BLOCKED causes, and anything left behind in data or environment.
