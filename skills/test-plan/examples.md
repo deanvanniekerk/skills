@@ -8,7 +8,7 @@ Feature: confirm an order with delivery-address validation. Pin the actual revie
 
 ## Cast and environment
 
-Use a disposable local fixture account with the order-manager role. Select one draft order with a complete address and another missing a required address field. Record how the target project's seed command creates them and how to look up their IDs. Configure mail/webhooks to the project's local sink before execution. The run uses a disposable local environment, so its teardown is the command that destroys it, and no case restores data.
+Use a disposable local fixture account with the order-manager role. Select one draft order with a complete address and another missing a required address field. Record how the target project's seed command creates them and how to look up their IDs. Configure mail/webhooks to the project's local sink before execution. The run leaves the data as its last case does, so every order and account it creates is prefixed `QA `.
 
 This excerpt has no repository evidence for those setup commands, so environment setup is **BLOCKED** until supplied. It does not invent a seed command, login, or port.
 
@@ -21,7 +21,7 @@ This excerpt has no repository evidence for those setup commands, so environment
 | ORD-03 | A role without confirmation permission calls the documented confirmation API | API refuses; order unchanged | Record status/body |
 | ORD-04 📸 | Manager opens the orders list at 1280 px (observe: the PR's Deviations narrowed the Cancel column) | Record whether the table scrolls sideways and whether Cancel is visible without scrolling | Screenshot |
 
-The full plan supplies the confirmed API endpoint/payload, exact refusal contract, role login procedure, fixture reset, and teardown command for the target project. It names actual automated coverage for concurrency and records a coverage gap if none exists.
+The full plan supplies the confirmed API endpoint/payload, exact refusal contract, role login procedure, and fixture reset for the target project. It names actual automated coverage for concurrency and records a coverage gap if none exists.
 
 ## Report template
 
@@ -33,5 +33,5 @@ ID | PASS/FAIL/BLOCKED/OBSERVED | evidence | notes
 Failures:
 Observations:
 Plan corrections:
-Torn down / left behind:
+Records created or edited directly:
 ```

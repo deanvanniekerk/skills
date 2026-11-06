@@ -19,7 +19,7 @@ Run one issue through implementation → simplification → pruning → local re
 
 Make routine implementation choices from the issue and repository guidance and record them. The user's request authorizes this delivery sequence. Record test seams before using `tdd`; this workflow delegates routine seam selection to the implementing agent. Respect explicit user constraints, host permissions, and repository approval requirements. Stop when requirements are materially ambiguous, credentials or tools are unavailable, verification fails, or an action exceeds the requested delivery scope. A judgment call does not substitute for an actual permission grant.
 
-Wait on your own commands in the foreground. One that outlasts a tool call's time limit runs in the background and writes an exit marker, and you wait for that marker in the foreground; the turn ends only with your report.
+Wait for your own long-running commands to finish: run one that outlasts a single tool call in the background and wait on it with your harness's own way of waiting for background work, never a sleep loop. End your turn only with your report.
 
 ## 1. Implement, simplify, and prune
 

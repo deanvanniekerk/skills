@@ -20,13 +20,13 @@ You orchestrate; subagents do the work. Your own hands only brief, watch, decide
 | Reviewer, planner, fixer | Claude `claude-opus-5-5`, effort `high` |
 | Tester | Codex `gpt-6.1-sol`, reasoning effort `high` |
 
-Start each subagent with `delegate_task` and the target above. The reviewer, planner and fixer get `isolation: "worktree"`. The tester runs where the plan's Environment section says: `isolation: "shared"` from the checkout it names, otherwise a worktree, one per lane. If a named model is unavailable, tell the user and stop. Every brief tells a subagent that starts a local environment, such as a dev server or a database slot, to tear it down before handing back.
+Start each subagent with `delegate_task` and the target above. The reviewer, planner and fixer get `isolation: "worktree"`. The tester runs where the plan's Environment section says: `isolation: "shared"` from the checkout it names, otherwise a worktree, one per lane. If a named model is unavailable, tell the user and stop. Every brief tells a subagent to stop any dev server it started before handing back.
 
 A brief names each skill to follow by the absolute path of its installed `SKILL.md`: the project's `.agents/skills/<name>/` or the global `~/.agents/skills/<name>/` (`npx skills list` shows both). `spec-review` and `implement` are user-invoked, so a subagent can only read them.
 
 ## Babysit
 
-The subagent that blasts a PR owns its fixes: it makes one `babysit` pass on that PR, as `tackle-issue`'s delegated mode says, addresses every review comment and failing check already there, and hands back ending with `PR <url>, head <sha>, checks and reviews <state>`. Waiting is yours: T3 lets no delegated subagent watch or poll a PR, so a handback with checks or the automated review still running is complete.
+The subagent that blasts a PR owns its fixes: it makes one `babysit` pass on that PR, as `tackle-issue`'s delegated mode says, addresses every review comment and failing check already there, and hands back ending with `PR <url>, head <sha>, checks and reviews <state>`. Waiting is yours: the subagent hands back rather than watching or polling the PR, so a handback with checks or the automated review still running is complete.
 
 **Settled**: checks pass (or the repo has none), the automated review finished on the current head, no unresolved actionable threads, and GitHub reports it mergeable.
 
@@ -38,8 +38,8 @@ A handback without the PR line is unfinished. One that says it is waiting on its
 
 1. **Review and consolidate.** Brief a reviewer subagent: run `spec-review` over the scope and its range `<base>..<head>`, publish with `blast-it`, and `babysit` it as **Babysit** says. Done when its PR is **Settled**, or it reports that the review found nothing worth changing (skip to step 3, carrying any open questions).
 2. **Merge** the review PR.
-3. **Plan.** Brief a planner subagent: write a manual test plan with `test-plan` covering the scope and step 1's PR, pinned to the merged default-branch commit, saved outside the repository, with an observe case for each open question from step 1. Done when the plan file exists with case IDs, 📸 marks, observe cases, a teardown, lanes when it has more than about 60 cases, and a report template.
-4. **Test.** Brief one tester per lane, up to three at once, each on its own disposable environment (a plan without lanes is one lane): run that lane with `execute-test-plan` at that commit, writing its report and evidence beside the plan. Answer their questions with `t3_pending_request`. Done when every case has a result across the lane reports and every tester's environment is torn down.
+3. **Plan.** Brief a planner subagent: write a manual test plan with `test-plan` covering the scope and step 1's PR, pinned to the merged default-branch commit, saved outside the repository, with an observe case for each open question from step 1. Done when the plan file exists with case IDs, 📸 marks, observe cases, lanes when it is large and the repository can run slots side by side, and a report template.
+4. **Test.** Brief one tester per lane, up to three at once, each in its own worktree on its own slot as the plan's Environment says (a plan without lanes is one lane, run where the plan says): run that lane with `execute-test-plan` at that commit, writing its report and evidence beside the plan. Answer their questions with `t3_pending_request`. Done when every case has a result across the lane reports.
 5. **Decide.** Read the report and step 1's open questions, and sort each item:
    - A FAIL from a defect is a fix.
    - A FAIL where the plan expected what a recorded decision since changed is a plan correction; note it for the user.

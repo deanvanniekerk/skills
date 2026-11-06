@@ -6,9 +6,9 @@ license: MIT
 
 # Execute Test Plan
 
-1. **Read** the plan fully, then start the apps it names. With a lane in your brief, the run is that lane's suites only.
+1. **Read** the plan fully, then start the apps it names. With a lane in your brief, first take that lane's slot as the plan's Environment says; the run is that lane's suites only.
 2. **Run** every case of your run in plan order by driving the app in a browser. Record PASS / FAIL / BLOCKED, and OBSERVED for an observe case, which has no pass/fail. Wrong behaviour is a FAIL; a label or placement that differs from the plan is a plan correction. A case you cannot drive is BLOCKED with the exact error, including a gesture whose timing the device tool cannot hold, such as a simulator double-tap.
-3. **Clean up** as below.
+3. **Finish** as below.
 4. **Report** in the plan's report template, saved where the plan or your brief says, and return it as your final message.
 
 Application code stays unchanged; nothing is committed or pushed. Prefix every record you create with `QA `.
@@ -24,11 +24,9 @@ Use the browser tool your environment provides. With none, or when it fails on i
 - Roles share one browser profile's storage. Sign out before signing in as the next role, or give each role its own profile.
 - Phone is 390 × 844, a narrow window 800 wide; dark theme is the browser's colour-scheme setting.
 
-## Clean up
+## Finish
 
-- Stop every server you started, by its PID.
-- **Disposable environment:** run the plan's teardown command. Its records, settings and test data go with it, so restore nothing.
-- **Shared or persistent environment:** work through the plan's restore steps. Put every setting you changed back to its original, such as a role, an assignment or a note, and remove your `QA ` records the way a user would, such as cancelling a document in the UI. Delete one directly only after the plan's checks show nothing references it.
-- Close every browser tab you opened and reset the colour scheme; with the Playwright fallback, remove it as that file says.
+- Leave the environment's data and settings as the last case left them: no teardown and no restore.
+- Stop every server you started, by its PID. Close every browser tab you opened and reset the colour scheme you changed; with the Playwright fallback, remove it as that file says.
 - Keep the report and the evidence screenshots.
-- List in the report what you tore down or restored, and anything you had to leave behind.
+- List in the report the records you created and any data you edited directly.
