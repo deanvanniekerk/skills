@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- `tackle-issue`: between steps only the affected tests and the typecheck run. The full verification runs once, on the head being published after the default branch is merged into it, and again only when a later push changes that head. It used to run after pruning and again after every review fix, three to six full runs per ticket.
 - `quality-control`, `tackle-spec`: the orchestrator decides a product question with a clear route itself (it follows from the spec, a recorded decision or the code's existing pattern, and keeps the agreed scope), records it like an answer, and lists it in the final report as its own; only forks (scope added or dropped, a recorded decision reversed, options that each have a fair case) go to the user. A ticket starts once it is ready and its own red flags are settled, without waiting on other tickets' forks.
 - `quality-control`: **Settled** takes the automated review's one pass on the PR; the orchestrator requests no second review and reads commits pushed after it itself. A PR whose head lacks the default branch goes back to its subagent to merge it and reverify before merging, since GitHub's mergeable flag does not say the combined code builds.
 - `tackle-spec`: the orchestrator reads only titles and blocking edges when building the graph; ticket bodies are the auditors' to read.

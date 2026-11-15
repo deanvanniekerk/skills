@@ -21,17 +21,19 @@ Make routine implementation choices from the issue and repository guidance and r
 
 Wait for your own long-running commands to finish: run one that outlasts a single tool call in the background and wait on it with your harness's own way of waiting for background work, never a sleep loop. End your turn only with your report.
 
+**Verification.** Between steps, run only what the change touches: the affected tests and the typecheck. The repository's full verification runs once, on the head you publish, after merging the default branch into it: that merged result is what lands. Run it again only when a later push changes the head.
+
 ## 1. Implement, simplify, and prune
 
 Implement the acceptance criteria using `tdd` at the chosen public boundaries, running targeted tests and typechecking during development.
 
-Simplify the changed code before pruning: reuse the existing helpers it duplicates, collapse indirection, remove speculative generality, and keep logic at the altitude of its neighbors. Every cleanup is behavior-preserving and stays within the issue's files; record a cleanup that wants to reach further as a follow-up. Claude Code's `simplify` skill performs this pass; on other hosts, apply this brief directly. Reverify after simplifying.
+Simplify the changed code before pruning: reuse the existing helpers it duplicates, collapse indirection, remove speculative generality, and keep logic at the altitude of its neighbors. Every cleanup is behavior-preserving and stays within the issue's files; record a cleanup that wants to reach further as a follow-up. Claude Code's `simplify` skill performs this pass; on other hosts, apply this brief directly. Rerun the affected tests after simplifying.
 
-Apply `prune-tests` in branch/prune mode to the simplified code and reverify affected behavior. Preserve regression coverage according to its rubric. Finish with the repository's full verification.
+Apply `prune-tests` in branch/prune mode to the simplified code and rerun the affected tests. Preserve regression coverage according to its rubric.
 
 ## 2. Commit and review locally
 
-Commit the scoped implementation and pruning changes before invoking `code-review`: that skill compares committed `HEAD` with the fixed base. Supply that base and the issue/spec explicitly. Fix actionable findings, verify, and commit fixes; review the updated diff where the fixes warrant it. Proceed only when acceptance criteria are covered, required checks pass, the scoped work is committed, and local review has no unresolved actionable findings.
+Commit the scoped implementation and pruning changes before invoking `code-review`: that skill compares committed `HEAD` with the fixed base. Supply that base and the issue/spec explicitly. Fix actionable findings, rerun the affected tests, and commit fixes; review the updated diff where the fixes warrant it. Then merge the default branch and run the full verification. Proceed only when acceptance criteria are covered, the full verification passes, the scoped work is committed, and local review has no unresolved actionable findings.
 
 The implementation/review sequence is adapted from Matt Pocock's `implement` workflow; see [CREDITS.md](CREDITS.md).
 

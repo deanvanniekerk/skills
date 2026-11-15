@@ -6,9 +6,9 @@ Expected flow:
 
 1. Verify tools, installed skills, and issue-tracker setup; pin the branch's review base.
 2. Exercise the public confirmation boundary with missing and complete addresses, then implement the validation.
-3. Simplify the change: reuse the existing address validator instead of a new one and drop the unused option added for a later issue. Reverify.
+3. Simplify the change: reuse the existing address validator instead of a new one and drop the unused option added for a later issue. Rerun the affected tests.
 4. Audit the new tests. Preserve the public-boundary regression; remove only demonstrated duplicates.
-5. Run verification and commit the scoped change. Invoke local `code-review` with the fixed base and the issue as its spec. Commit any verified fixes before publication.
+5. Commit the scoped change. Invoke local `code-review` with the fixed base and the issue as its spec. Commit any verified fixes, merge the default branch, and run the full verification once before publication.
 6. Use `blast-it`; a clean worktree requires no second implementation commit.
 7. Run Claude review against the PR's pinned head, supplying earlier local findings and their disposition. Publish only findings that remain after the final comment refresh; retain the local receipt.
 8. Use `babysit` to verify and fix actionable findings and wait for checks on the current head.
