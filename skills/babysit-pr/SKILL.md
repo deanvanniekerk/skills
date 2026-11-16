@@ -25,7 +25,7 @@ Merging stays a separate request.
 
 ## Waiting
 
-After a pass, wait for the PR's next change with your harness's PR watcher and make another pass when it wakes you: in T3 Code, `watch_pull_request`, then end your turn. With no watcher, wait on one long-running command, such as `gh pr checks <n> --watch`, rather than a polling loop of your own. A wake that needs no action needs no message.
+After a pass, wait for the PR's next change with your harness's PR watcher and make another pass when it wakes you: in T3 Code, `watch_pull_request`, then end your turn. With no watcher, `gh pr checks <n> --watch` waits for the checks alone: once they finish, report any review still running and stop, rather than polling for it. A wake that needs no action needs no message.
 
 **One pass.** When your brief says an orchestrator watches the PR, make one pass and hand back with checks or a review still running. The waiting is the orchestrator's.
 

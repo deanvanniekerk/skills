@@ -16,7 +16,7 @@ Requires Git and authenticated GitHub CLI with push access. No other skills are 
 
 > Use babysit-pr on this branch's PR until it is ready. Do not merge.
 
-Each pass reads the PR, checks every finding against the code, fixes the real ones that belong to the PR, declines the rest with a written reason, pushes once, and answers and resolves each thread. Between passes it waits on the host's PR watcher (T3 Code's `watch_pull_request`) instead of polling. Briefed by an orchestrator that watches the PR, as `tackle-spec` and `quality-control` do, it makes one pass and hands back.
+Each pass reads the PR, checks every finding against the code, fixes the real ones that belong to the PR, declines the rest with a written reason, pushes once, and answers and resolves each thread. Between passes it waits on the host's PR watcher (T3 Code's `watch_pull_request`) instead of polling. On a host without one it can wait for checks only, and reports a review that is still running instead of polling for it. Briefed by an orchestrator that watches the PR, as `tackle-spec` and `quality-control` do, it makes one pass and hands back.
 
 Review loops tend to grow a PR one small fix at a time. This skill keeps the PR at the size its purpose needs: a rare path outside that purpose, a test that pins nothing, extra compatibility, or a small cost is declined and listed as a follow-up.
 
