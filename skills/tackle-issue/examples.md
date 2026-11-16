@@ -10,7 +10,7 @@ Expected flow:
 4. Prune the new tests. Preserve the public-boundary regression; remove only demonstrated duplicates.
 5. Commit the scoped change. Run the review round: `code-review` with the fixed base and the issue as its spec, and the defects reviewer beside it. Commit any verified fixes, merge the default branch, and run the full verification once before publication.
 6. Use `blast-it`; a clean worktree requires no second implementation commit.
-7. Use `babysit` to verify and fix actionable findings and wait for checks on the current head.
+7. Use `babysit-pr` to verify and fix actionable findings and wait for checks on the current head.
 
 If branch protection requires a human approval after every automated check passes, report that approval is pending. Do not describe the PR as merge-ready or loop indefinitely waiting for an action only a person can take.
 

@@ -5,9 +5,8 @@ Turn one GitHub issue into a reviewed, verified PR, and work through CI and revi
 ## Install the complete workflow
 
 ```bash
-npx skills@latest add deanvanniekerk/skills --skill tackle-issue blast-it -g -a codex
-npx skills@latest add mattpocock/skills --skill pr code-review setup-matt-pocock-skills -g -a codex
-npx skills@latest add thedotmack/claude-mem --skill babysit -g -a codex
+npx skills@latest add deanvanniekerk/skills --skill tackle-issue blast-it babysit-pr -g -a codex
+npx skills@latest add mattpocock/skills --skill code-review setup-matt-pocock-skills -g -a codex
 ```
 
 Run `setup-matt-pocock-skills` in the target project once, so the upstream review skill has issue-tracker configuration. Use the same agent and global/project scope for every dependency. Already installed upstream plugins can satisfy these dependencies; avoid duplicate copies. Skills CLI installation of this skill does not automatically install its dependency chain.
@@ -33,7 +32,7 @@ The review round runs once, before publication, after the changes are committed:
 
 It creates commits, pushes, and fixes verified review issues. It never merges as part of this workflow. Briefed by an orchestrator that watches the PR (`tackle-spec`, `quality-control`), it makes one follow-up pass and hands the PR back with checks still running. Follow-up ends when the PR meets the criteria, closes/merges externally, requires human action, or remains blocked after two attempted remedies. Continuing later requires a supported monitor and authorization.
 
-Only an entirely mechanical diff skips the review round: comments, formatting, or prose that changes no procedure. Optional nits do not create release gates or automatic test additions. Ask for a Claude review in the request to also run `claude-code-pr-review` on the published PR.
+Only an entirely mechanical diff skips the review round: comments, formatting, or prose that changes no procedure. A finding is fixed when it is real and within the issue; the rest is declined with a reason and listed as a follow-up, so review does not grow the PR. Ask for a Claude review in the request to also run `claude-code-pr-review` on the published PR.
 
 ## Expected result
 

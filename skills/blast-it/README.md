@@ -1,15 +1,14 @@
 # Blast It
 
-Publish the work in front of you as a ready-for-review GitHub pull request. The description follows the whole PR diff, even when that is wider than the last conversation.
+Publish the work in front of you as a ready-for-review GitHub pull request. The description covers the whole PR diff, even when that is wider than the last conversation, and stays short: the problem, the change, any departures from the plan, and a line on how it was proved.
 
 ## Install and prerequisites
 
 ```bash
 npx skills@latest add deanvanniekerk/skills --skill blast-it -g -a codex
-npx skills@latest add mattpocock/skills --skill pr -g -a codex
 ```
 
-Requires Git, authenticated GitHub CLI (`gh auth login`), push access, and the project's verification tools. Omit `-g` for project scope; change or omit `-a` for another agent. `pr` must be available to the same agent. A plugin installation of `pr` also works; avoid duplicate installations.
+Requires Git, authenticated GitHub CLI (`gh auth login`), push access, and the project's verification tools. Omit `-g` for project scope; change or omit `-a` for another agent. No other skills are required.
 
 ## Use
 
@@ -27,4 +26,4 @@ See [the synthetic example](examples.md) and [agent instructions](SKILL.md). Git
 
 ## Attribution
 
-Authored and maintained by Dean van Niekerk. Depends on Matt Pocock's PR-writing skill; related upstream work is acknowledged in [CREDITS.md](CREDITS.md). [MIT license](LICENSE.txt).
+Authored and maintained by Dean van Niekerk; related work is acknowledged in [CREDITS.md](CREDITS.md). [MIT license](LICENSE.txt).
