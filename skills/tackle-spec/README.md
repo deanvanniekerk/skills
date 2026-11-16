@@ -3,8 +3,8 @@
 Deliver a whole spec with one command: a parent issue and its sub-issues, from open tickets to a merged, quality-checked whole. It also takes a single big issue with no parent, and gives that one ticket the same check, delivery and quality pass. The agent you start orchestrates; subagents do the work:
 
 1. Tickets run in the order their blocking links allow, up to two at a time.
-2. Before the first ticket starts, a Claude Opus 5.5 subagent per ticket checks it against the default branch for red flags: product questions, premises the code contradicts, and names later tickets rely on. The orchestrator decides each product question with a clear route itself and lists those decisions in its final report; the real forks (scope added or dropped, a recorded decision reversed, options that each have a fair case) come to you in one round, asked in a message so merging carries on while you decide. A ticket starts as soon as it is ready and its own questions are settled; the settled flags become each ticket's binding Decisions, and the rest of the ticket stays a plan the implementer may depart from.
-3. A second Opus subagent tackles each ticket with `tackle-issue` as one PR, makes one pass over what review and CI raise, and stops any dev server it started and releases any slot it took; the orchestrator watches the PR and merges it once settled, sending it back first if the default branch has moved past its head. Tickets that each add a database migration run one after the other.
+2. Before the first ticket starts, one Claude Opus subagent checks every ticket against the default branch, and against the other tickets, for red flags: product questions, premises the code contradicts, and names later tickets rely on. The orchestrator decides each product question with a clear route itself and lists those decisions in its final report; the real forks (scope added or dropped, a recorded decision reversed, options that each have a fair case) come to you in one round, asked in a message so merging carries on while you decide. A ticket starts as soon as it is ready and its own questions are settled; the settled flags become each ticket's binding Decisions, and the rest of the ticket stays a plan the implementer may depart from.
+3. An Opus subagent per ticket tackles it with `tackle-issue` as one PR, makes one pass over what review and CI raise, and stops any dev server it started and releases any slot it took; the orchestrator watches the PR and merges it once settled, sending it back first if the default branch has moved past its head. Tickets that each add a database migration run one after the other.
 4. Once every ticket has merged, the orchestrator runs `quality-control` over the spec: `spec-review` consolidates the code the tickets duplicated, then a test plan, a browser test run, and a fix PR.
 
 ## Install
@@ -13,7 +13,7 @@ Deliver a whole spec with one command: a parent issue and its sub-issues, from o
 npx skills@latest add deanvanniekerk/skills --skill tackle-spec --skill tackle-issue --skill quality-control -a codex -a claude-code
 ```
 
-Then install what [tackle-issue](../tackle-issue/README.md) and [quality-control](../quality-control/README.md) each chain. Requires [T3 Code](https://github.com/pingdotgg/t3code) for its subagent, PR-watch, and pending-request tools, with Claude (`claude-opus-5-5`) and Codex (`gpt-6.1-sol`) providers available, and authenticated `gh` with push and merge rights.
+Then install what [tackle-issue](../tackle-issue/README.md) and [quality-control](../quality-control/README.md) each chain. Requires [T3 Code](https://github.com/pingdotgg/t3code) for its subagent, PR-watch, and pending-request tools, with Claude (Opus) and Codex (GPT Sol) providers available, and authenticated `gh` with push and merge rights.
 
 ## Use
 
