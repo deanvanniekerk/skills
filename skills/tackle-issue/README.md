@@ -12,7 +12,7 @@ npx skills@latest add thedotmack/claude-mem --skill babysit -g -a codex
 
 Run `setup-matt-pocock-skills` in the target project once, so the upstream review skill has issue-tracker configuration. Use the same agent and global/project scope for every dependency. Already installed upstream plugins can satisfy these dependencies; avoid duplicate copies. Skills CLI installation of this skill does not automatically install its dependency chain.
 
-Requires Git, authenticated GitHub CLI with push/review access, the project's dependencies, and verification commands. The review round runs in subagents, so the host must support them. The defects reviewer is a Claude Opus subagent. A Claude review of the published PR is opt-in and needs `claude-code-pr-review` with authenticated Claude Code. Missing required dependencies are identified before implementation.
+Requires Git, authenticated GitHub CLI with push/review access, the project's dependencies, and verification commands. The review round runs in subagents, so the host must support them. The defects reviewer is a Claude Opus subagent, so the host must be able to start one: Claude Code does natively, and [T3 Code](https://github.com/pingdotgg/t3code) does from any provider. Plain Codex cannot, and the flow stops at setup there. A Claude review of the published PR is opt-in and needs `claude-code-pr-review` with authenticated Claude Code. Missing required dependencies are identified before implementation.
 
 ## Use
 
