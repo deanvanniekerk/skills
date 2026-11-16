@@ -23,6 +23,8 @@ The skill is user-invoked only; an agent never starts it on its own.
 
 > /tackle-spec #767, three tickets at a time
 
+> /tackle-spec #790, with thorough testing
+
 > /tackle-spec #812 (one big ticket, no parent)
 
 ## Expected result

@@ -3,7 +3,7 @@
 Put a spec through a full quality pass with one command, once its tickets have merged. [tackle-spec](../tackle-spec/README.md) runs it as its last stage. Each ticket was already reviewed on its own (for example by `tackle-issue`); this pass checks the spec as a whole. The agent you start orchestrates; subagents do the work:
 
 1. A Claude Opus 5.5 subagent runs `spec-review` over the spec's merged range: it consolidates the code the tickets duplicated, harmonises it with the codebase, opens a PR, and fixes what review and CI raise; the orchestrator watches it and merges it once settled.
-2. A second Opus subagent writes a manual test plan, split into up to three lanes when it is large and the repository can run local slots side by side.
+2. A second Opus subagent writes a manual test plan: a smoke plan of about 20 cases in one lane by default, or a thorough one when you ask for thorough testing, split into up to three lanes when it is large and the repository can run local slots side by side.
 3. A GPT-6.1 Sol subagent per lane runs that plan in a browser, each on its own slot, which it releases when done, with no data restore.
 4. The orchestrator decides open questions and observations with a clear route itself, and puts the real forks to you in one round, in a message.
 5. If the run found failures, a third Opus subagent starts fixing them at once, and the changes you ask for follow it. It opens a PR and fixes what review and CI raise; the orchestrator watches it and merges it once settled.
@@ -31,6 +31,8 @@ The skill is user-invoked only; an agent never starts it on its own.
 > /quality-control on spec #746
 
 > /quality-control on PRs 1917, 1918 and 1920
+
+> /quality-control on spec #746, test it thoroughly
 
 > /quality-control on everything merged since v1.4.0
 
