@@ -14,6 +14,7 @@ Portable agent workflows for implementing, reviewing, publishing, and testing co
 | [babysit-pr](skills/babysit-pr/README.md) | Takes a PR through its checks and reviews until it is ready to merge |
 | [tackle-issue](skills/tackle-issue/README.md) | Takes an issue through implementation, review, and CI; stops before merging |
 | [tackle-spec](skills/tackle-spec/README.md) | Tackles every sub-issue of a spec in subagents, merging each PR, then runs quality-control (T3 Code) |
+| [council](skills/council/README.md) | Puts an idea, plan, UI, or piece of work before models from different providers, then revises it from their verdicts |
 
 ## Install
 
@@ -44,6 +45,8 @@ Ask your agent:
 > Use tackle-issue on issue 42.
 
 > /tackle-spec 40
+
+> Council this stamina mechanic before I build it.
 
 ## Update
 
