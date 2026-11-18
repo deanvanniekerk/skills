@@ -15,6 +15,6 @@ Tackle    implementer on #41 and #42 in parallel (each told the other edits orde
 Merge     #45 merged; #46's head now lacks main, so its implementer merged main and reverified; #46 merged; #43 and #44 now ready; #45 lists no Deviations touching #43, so no re-check
 Tackle    #43 → PR #47; #44 → PR #48; both watched until settled
 Merge     #47, #48 merged; all sub-issues closed
-QC        quality-control on #40: spec-review PR #51 (one address validator, −84 lines) merged; plan 10 cases; test 9 PASS, 1 OBSERVED → decided; fix PR #52 merged
+QC        quality-control on #40: spec-review by Opus and Astra, consolidation PR #51 (one address validator, −84 lines) merged; plan 10 cases; test 9 PASS, 1 OBSERVED → decided; fix PR #52 merged
 Report    sent, listing the 3 decisions made for the user; #40 left open for the user
 ```

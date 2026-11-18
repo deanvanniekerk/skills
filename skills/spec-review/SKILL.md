@@ -1,17 +1,21 @@
 ---
 name: spec-review
-description: "Consolidate a spec's merged tickets once agents built them independently: find the judo moves that collapse duplicated code, harmonise the tickets with each other and the codebase, and ship one behaviour-preserving PR."
+description: "Review a spec's merged tickets once agents built them independently: find the judo moves that collapse duplicated code, the code that does not fit its neighbours, and the bugs where tickets meet, and write them up as findings for `spec-consolidate`."
 disable-model-invocation: true
 license: MIT
 ---
 
 # Spec Review
 
-A spec's tickets were built by agents working independently, each reviewed against its own ticket. No agent saw the others' work, so the merged result usually solves the same idea two or three ways, each in its own style. Now the whole range is in view. **Consolidate** it: find the judo moves that make the duplicated code disappear, until the spec reads as if one author wrote it, the same author as the rest of the codebase.
+A spec's tickets were built by agents working independently, each reviewed against its own ticket. No agent saw the others' work, so the merged result usually solves the same idea two or three ways, each in its own style. Now the whole range is in view. Find what **consolidating** it takes: the judo moves that make the duplicated code disappear, until the spec reads as if one author wrote it, the same author as the rest of the codebase.
+
+This is a review: it produces a findings file, and `spec-consolidate` applies it. Several reviewers can run over the same range at once, each on its own model, and `spec-consolidate` takes all their files. Leave the repository as you found it.
 
 **Input**: the spec (a parent issue and its sub-issues, or one big issue alone) and the merged range `<base>..<head>`, where `<base>` is the default branch just before the spec's first PR. Resolve whichever the user gives you to both, and pin `<head>`.
 
 **Decisions** are the product choices the spec records: decision sections in the issues, Deviations in the PR bodies, the user's replies. They are binding. Consolidation keeps behaviour exactly as it is; anything that would change it goes under **Open questions** with a concrete scenario.
+
+**Output**: one Markdown file at the path your brief gives, or outside the repository when none is given.
 
 ## Steps
 
@@ -20,15 +24,18 @@ A spec's tickets were built by agents working independently, each reviewed again
 3. **Find the judo moves** in that inventory, using [Judo moves](#judo-moves). Rank them by how much code and how many concepts each one deletes.
 4. **Harmonise.** Read each ticket's code against its neighbours, using [Fit](#fit).
 5. **Check the seams** between tickets, using [Seams and drift](#seams-and-drift).
-6. **Verify** every finding against the code before acting on it, reproducing a bug with a failing test where you can. Discard anything you cannot confirm.
-7. **Apply** the confirmed moves, largest first. Run the repository's checks after each, so a consolidation that breaks behaviour is caught where it happened. Give each bug fixed a test. A move too large for one PR goes in the PR body as a follow-up, with its plan.
-8. **Publish** one PR (with `blast-it` when it is installed). In the body:
-   - the consolidations: what merged into what, and the code it deleted;
-   - harmonisations and bugs fixed (file:line, the scenario, the fix and its test);
-   - **Open questions**, each with its scenario;
-   - discarded findings, one line each.
+6. **Verify** every finding against the code at `<head>`. Reproduce a bug with a failing test where you can, copy the test into the finding, and then remove it. Discard anything you cannot confirm.
+7. **Write the findings file**, largest move first. Each finding gets:
+   - an ID (`F1`, `F2`, …) and its kind: consolidation, harmonisation, bug, seam, coverage or drift;
+   - every site it touches, as `file:line`;
+   - what is wrong, with the scenario or the duplicated code side by side;
+   - the move: what stays, what goes, and where the survivor lives;
+   - its size: the lines and concepts it deletes;
+   - how you verified it: the test that fails, or the path you traced.
 
-   Done when the PR is open and the repository's checks pass on its head. Finish with `PR <url>, head <sha>, checks <state>`.
+   Then **Open questions**, each with its scenario, and **Discarded**, one line each. Write each finding so it can be applied by someone who has not read the range: name the code, never "the helper above".
+
+   Done when every confirmed finding is in the file and the repository's working tree is as you found it. Finish with `Findings <path>, <n> findings, <m> open questions, at <head sha>`.
 
 ## Judo moves
 
