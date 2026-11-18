@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- `tackle-issue`: the defects review runs two reviewers side by side on the same brief, Claude Opus and Codex GPT Astra (reasoning effort `high`), and the report lists each one's findings under its model's name, marked fixed, declined, or found by both, to compare the two. The host must be able to start both, so plain Claude Code now stops at setup like plain Codex; T3 Code runs it from either.
 - `babysit-pr`: new skill, replacing the `babysit` dependency. A pass reads the PR, verifies each finding against the code, fixes what is real and within the PR's purpose, declines the rest with a reason, pushes once, and answers and resolves each thread. It waits on the host's PR watcher instead of polling every 30 to 60 seconds, makes one pass when an orchestrator watches the PR, and reports instead of waiting when only a person can move the PR on. `tackle-issue` and `quality-control` use it.
 - `tackle-issue`: a review finding is fixed when it is real and within the issue, with the smallest change that removes it; the rest is declined with a reason and listed as a follow-up. Every P2 used to be fixed, which grew PRs one small fix at a time.
 - `tackle-spec`: one auditor checks every open ticket, and the tickets against each other; a spec over about six tickets gets two. One per ticket cost 10 to 16% of a run's subagent spend, each rereading the parent and the repository's guidance, and saw the other tickets only as a paragraph in its brief.
