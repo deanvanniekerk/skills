@@ -11,7 +11,7 @@ npx skills@latest add mattpocock/skills --skill code-review setup-matt-pocock-sk
 
 Run `setup-matt-pocock-skills` in the target project once, so the upstream review skill has issue-tracker configuration. Use the same agent and global/project scope for every dependency. Already installed upstream plugins can satisfy these dependencies; avoid duplicate copies. Skills CLI installation of this skill does not automatically install its dependency chain.
 
-Requires Git, authenticated GitHub CLI with push/review access, the project's dependencies, and verification commands. The review round runs in subagents, so the host must support them. The defects review runs a Claude Opus subagent and a Codex GPT Astra one side by side, so the host must be able to start both: [T3 Code](https://github.com/pingdotgg/t3code) does from either provider. Plain Claude Code or plain Codex cannot, and the flow stops at setup there. A Claude review of the published PR is opt-in and needs `claude-code-pr-review` with authenticated Claude Code. Missing required dependencies are identified before implementation.
+Requires Git, authenticated GitHub CLI with push/review access, the project's dependencies, and verification commands. The review round runs in subagents, so the host must support them. The defects review runs a Claude Opus subagent and a Codex GPT Astra one side by side, so the host must be able to start both: [T3 Code](https://github.com/pingdotgg/t3code) does from either provider. Plain Claude Code or plain Codex cannot, and the flow stops at setup there. Missing required dependencies are identified before implementation.
 
 ## Use
 
@@ -32,7 +32,7 @@ The review round runs once, before publication, after the changes are committed:
 
 It creates commits, pushes, and fixes verified review issues. It never merges as part of this workflow. Briefed by an orchestrator that watches the PR (`tackle-spec`, `quality-control`), it makes one follow-up pass and hands the PR back with checks still running. Follow-up ends when the PR meets the criteria, closes/merges externally, requires human action, or remains blocked after two attempted remedies. Continuing later requires a supported monitor and authorization.
 
-Only an entirely mechanical diff skips the review round: comments, formatting, or prose that changes no procedure. A finding is fixed when it is real and within the issue; the rest is declined with a reason and listed as a follow-up, so review does not grow the PR. Ask for a Claude review in the request to also run `claude-code-pr-review` on the published PR.
+Only an entirely mechanical diff skips the review round: comments, formatting, or prose that changes no procedure. A finding is fixed when it is real and within the issue; the rest is declined with a reason and listed as a follow-up, so review does not grow the PR.
 
 ## Expected result
 

@@ -52,8 +52,6 @@ Apply `blast-it` to the scoped work. It reuses existing commits when the worktre
 
 Apply `babysit-pr` until the PR is ready.
 
-Run `claude-code-pr-review` on the published PR only when the user or your brief asks for a Claude review.
-
 **Delegated mode.** When an orchestrator briefs you to hand the PR back for it to watch, as `tackle-spec` and `quality-control` do, follow-up is `babysit-pr`'s one pass.
 
 ## Completion

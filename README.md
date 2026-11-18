@@ -10,7 +10,6 @@ Portable agent workflows for implementing, reviewing, publishing, and testing co
 | [execute-test-plan](skills/execute-test-plan/README.md) | Runs a test plan in a browser and fills in its report |
 | [quality-control](skills/quality-control/README.md) | Orchestrates a spec-level review, test plan, browser test run, and fix PRs once a spec's tickets merge (T3 Code) |
 | [prune-tests](skills/prune-tests/README.md) | Audits or removes low-value tests |
-| [claude-code-pr-review](skills/claude-code-pr-review/README.md) | Runs Claude Code review and posts validated findings |
 | [blast-it](skills/blast-it/README.md) | Commits, pushes, and opens or updates a PR |
 | [babysit-pr](skills/babysit-pr/README.md) | Takes a PR through its checks and reviews until it is ready to merge |
 | [tackle-issue](skills/tackle-issue/README.md) | Takes an issue through implementation, review, and CI; stops before merging |
@@ -30,7 +29,7 @@ Use `-g` for global installation, `--skill <name>` for one skill, and `-a <agent
 npx skills@latest add deanvanniekerk/skills --skill test-plan -g -a codex
 ```
 
-`tackle-issue`, `quality-control` and `tackle-spec` need additional skills; see their linked READMEs for setup. Publishing and GitHub review require authenticated `gh`. Claude review also requires authenticated Claude Code and uses your Claude allowance or API usage.
+`tackle-issue`, `quality-control` and `tackle-spec` need additional skills; see their linked READMEs for setup. Publishing and GitHub review require authenticated `gh`.
 
 ## Use
 
