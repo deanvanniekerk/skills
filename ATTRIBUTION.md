@@ -1,6 +1,6 @@
 # Attribution and dependencies
 
-Dean van Niekerk maintains the ten skills in this repository. Publication preparation distinguished local custom skills from Skills CLI-managed upstream installations; the latter are deliberately not vendored into this collection.
+Dean van Niekerk maintains the eleven skills in this repository. Publication preparation distinguished local custom skills from Skills CLI-managed upstream installations; the latter are deliberately not vendored into this collection.
 
 ## Adapted material
 
@@ -27,7 +27,7 @@ These are provenance records, not CLI version pins or end-to-end test results. C
 
 ## Related work and tools
 
-- [Theo Browne's tstack](https://github.com/t3dotgg/tstack) is the source of two ideas: `babysit-pr` waits on a watcher and holds a PR to the size its purpose needs, and `blast-it` leads a PR body with the problem. No text is copied, and it is not required.
+- [Theo Browne's tstack](https://github.com/t3dotgg/tstack) is the source of three ideas: `babysit-pr` waits on a watcher and holds a PR to the size its purpose needs, `blast-it` leads a PR body with the problem, and `council` is a generalised version of its council skill. No text is copied, and it is not required.
 - [thedotmack's babysit](https://github.com/thedotmack/claude-mem/tree/main/plugin/skills/babysit) and [Matt Pocock's pr](https://github.com/mattpocock/skills/tree/main/skills/engineering/pr) were dependencies until `babysit-pr` and `blast-it`'s own body brief replaced them.
 - [Matt Pocock's implement-spec](https://github.com/mattpocock/skills) inspired `tackle-spec`'s reading of tickets as a task graph worked by readiness. No text is copied, and it is not required.
 - [Cursor's thermo-nuclear code quality review](https://github.com/cursor/plugins/tree/main/thermos/skills/thermo-nuclear-code-quality-review) is the source of `spec-review`'s judo move and 1,000-line file bar, which `spec-consolidate` also judges findings by. No text is copied, and it is not required.
