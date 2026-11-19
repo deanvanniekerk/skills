@@ -8,7 +8,7 @@ Expected flow:
 2. Exercise the public confirmation boundary with missing and complete addresses, then implement the validation.
 3. Simplify the change: reuse the existing address validator instead of a new one and drop the unused option added for a later issue. Rerun the affected tests.
 4. Prune the new tests. Preserve the public-boundary regression; remove only demonstrated duplicates.
-5. Commit the scoped change. Run the review round: `code-review` with the fixed base and the issue as its spec, and the Opus and Astra defects reviewers beside it. Commit any verified fixes, merge the default branch, and run the full verification once before publication.
+5. Commit the scoped change. Run the review round: an Astra reviewer briefed from `review-brief.md`, following `code-review` with the fixed base and the issue as its spec, and reviewing Defects beside it. It reports a stale-cache path in the existing order list as a follow-up, outside the issue. Commit any verified fixes, merge the default branch, and run the full verification once before publication.
 6. Use `blast-it`; a clean worktree requires no second implementation commit.
 7. Use `babysit-pr` to verify and fix actionable findings and wait for checks on the current head.
 
