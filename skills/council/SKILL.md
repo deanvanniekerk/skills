@@ -10,7 +10,7 @@ A council is two or more models from different providers judging one **subject**
 
 ## 1. Seat
 
-One member per provider, at reasoning effort `high`. Members the user names are the council. Otherwise seat the newest Claude Opus and the newest Codex GPT Astra the host lists (in T3 Code, `orchestrator_capabilities`), plus the flagship of any further provider it offers. With fewer than two providers reachable, or a named member missing, report it instead of substituting: two seats from one provider give one opinion twice.
+One member per provider, at reasoning effort `high`. Members the user names are the council. Otherwise seat the newest Claude Opus and the newest Codex GPT Sol the host lists (in T3 Code, `orchestrator_capabilities`), plus the flagship of any further provider it offers. With fewer than two providers reachable, or a named member missing, report it instead of substituting: two seats from one provider give one opinion twice.
 
 ## 2. Ready the subject
 

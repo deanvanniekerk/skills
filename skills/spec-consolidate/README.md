@@ -14,7 +14,7 @@ It judges findings by `spec-review`'s rules, so install the two together. With [
 
 The skill is user-invoked only; `quality-control` runs it after its reviewers.
 
-> /spec-consolidate on spec #40 with ~/spec-reviews/40/opus.md and ~/spec-reviews/40/astra.md
+> /spec-consolidate on spec #40 with ~/spec-reviews/40/opus.md and ~/spec-reviews/40/sol.md
 
 ## Expected result
 

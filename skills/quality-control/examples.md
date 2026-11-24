@@ -9,7 +9,7 @@ This is a fictional example, not a record of a real run.
 ## Orchestrator log
 
 ```text
-1. Review   finder (GPT Astra high) → astra.md 6 findings
+1. Review   finder (GPT Sol high) → sol.md 6 findings
             consolidator (Opus high) on it → 3 applied, 1 discarded, 1 open question, 1 follow-up → PR #51 "refactor(orders): consolidate the spec's address and status code", 1 open question (cancel after a partial refund?), handed back after one babysit pass; watched until settled at 3f2a9c1
 2. Merge    #51 merged as 8d04e7b (repo merges with merge commits)
 3. Plan     planner (Opus high) → ~/test-plans/orders-plan.md, 10 cases (1 observe), one lane, pinned to 8d04e7b

@@ -18,7 +18,7 @@ Needs a host that can start a model from at least two providers. T3 Code with Cl
 
 > Council the plan in docs/sync.md with Opus, GPT Sol and GPT Astra. One round only.
 
-The agent seats one member per provider (by default the newest Claude Opus and Codex GPT Astra) unless you name them. It writes the subject's evidence to files (the full plan, screenshots per width and state, the numbers behind a mechanic) and gives every member the same brief, so each judges independently. Members are read-only. The agent adopts, declines with a reason, or brings to you each issue raised, revises the subject, and reconvenes until every member says ship, for at most three rounds.
+The agent seats one member per provider (by default the newest Claude Opus and Codex GPT Sol) unless you name them. It writes the subject's evidence to files (the full plan, screenshots per width and state, the numbers behind a mechanic) and gives every member the same brief, so each judges independently. Members are read-only. The agent adopts, declines with a reason, or brings to you each issue raised, revises the subject, and reconvenes until every member says ship, for at most three rounds.
 
 It guards the scope: ideas that make the subject bigger instead of better are listed for later, not adopted.
 
