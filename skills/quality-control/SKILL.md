@@ -17,7 +17,7 @@ You orchestrate; subagents do the work. Your own hands only brief, watch, decide
 
 | Role | Agent |
 | --- | --- |
-| Finder | Codex GPT Astra, reasoning effort `high` |
+| Finder | Codex GPT Sol, reasoning effort `high` |
 | Consolidator, planner, fixer | Claude Opus, effort `high` |
 | Tester | Codex GPT Sol, reasoning effort `high` |
 

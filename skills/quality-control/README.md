@@ -2,7 +2,7 @@
 
 Put a spec through a full quality pass with one command, once its tickets have merged. [tackle-spec](../tackle-spec/README.md) runs it as its last stage. Each ticket was already reviewed on its own (for example by `tackle-issue`); this pass checks the spec as a whole. The agent you start orchestrates; subagents do the work:
 
-1. A Codex GPT Astra subagent runs `spec-review` over the spec's merged range and writes what it finds to a file: the code the tickets duplicated, what does not fit the codebase, and the bugs where tickets meet. A Claude Opus subagent runs `spec-consolidate` on that file: it merges the shared findings, checks each against the code, applies the confirmed ones, opens a PR, and fixes what review and CI raise; the orchestrator watches it and merges it once settled.
+1. A Codex GPT Sol subagent runs `spec-review` over the spec's merged range and writes what it finds to a file: the code the tickets duplicated, what does not fit the codebase, and the bugs where tickets meet. A Claude Opus subagent runs `spec-consolidate` on that file: it merges the shared findings, checks each against the code, applies the confirmed ones, opens a PR, and fixes what review and CI raise; the orchestrator watches it and merges it once settled.
 2. Another Opus subagent writes a manual test plan: a smoke plan of about 20 cases in one lane by default, or a thorough one when you ask for thorough testing, split into up to three lanes when it is large and the repository can run local slots side by side.
 3. A GPT Sol subagent per lane runs that plan in a browser, each on its own slot, which it releases when done, with no data restore.
 4. The orchestrator decides open questions and observations with a clear route itself, and puts the real forks to you in one round, in a message.
@@ -21,7 +21,7 @@ npx skills@latest add deanvanniekerk/skills --skill spec-review --skill spec-con
 npx skills@latest add mattpocock/skills --skill implement -a codex -a claude-code
 ```
 
-Requires [T3 Code](https://github.com/pingdotgg/t3code) for its subagent, PR-watch, and pending-request tools, with Claude (Opus) and Codex (GPT Sol, GPT Astra) providers available. Also requires authenticated `gh` with push and merge rights. It stops if a named model is unavailable rather than substituting another.
+Requires [T3 Code](https://github.com/pingdotgg/t3code) for its subagent, PR-watch, and pending-request tools, with Claude (Opus) and Codex (GPT Sol) providers available. Also requires authenticated `gh` with push and merge rights. It stops if a named model is unavailable rather than substituting another.
 
 ## Use
 
